@@ -1,19 +1,18 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { fadeUp, staggerContainer } from '@/lib/animations';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
+import { fadeUp } from '@/lib/animations';
 
 import TypingHeading from './TypingHeading';
 
 const CASES = [
   {
-    large: true,
     label: "FIRBID",
     type: "UX & UI",
     sector: "Fintech · Plataforma de subastas",
     title: "Firbid — De idea a producto listo para el mercado",
     desc: "Crisva tomó la plataforma de Firbid desde el prototipado hasta la auditoría UX&UI completa, poniéndola lista para salir al mercado por primera vez. Proceso end-to-end que cubrió flujo de registro, onboarding, sistema de pujas y transacción final.",
-    quote: "'Realizaron una auditoría UX&UI que puso nuestra plataforma lista para salir al mercado. ¡Excelente trabajo!' — José Duarte, CEO Firbid",
     metrics: [
       { num: "0 → 1", label: "MVP listo para mercado" },
       { num: "100%", label: "Proceso end-to-end cubierto" },
@@ -45,16 +44,31 @@ const CASES = [
 ];
 
 export default function Cases() {
+  const [index, setIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const nextStep = () => {
+    setIndex((prev) => (prev + 1) % CASES.length);
+  };
+
+  const prevStep = () => {
+    setIndex((prev) => (prev - 1 + CASES.length) % CASES.length);
+  };
+
+  // Card parameters
+  const cardWidth = 860;
+  const gap = 32;
+
   return (
-    <section id="casos" className="section">
-      <div className="container">
+    <section id="casos" className="section" style={{ overflow: 'hidden' }}>
+      <div className="container" style={{ position: 'relative' }}>
         <motion.div
           className="cases-header"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
-          style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto 5rem' }}
+          style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto 6rem' }}
         >
           <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
             Productos que trascendieron
@@ -75,94 +89,196 @@ export default function Cases() {
           </p>
         </motion.div>
 
-        <motion.div
-          className="cases-grid"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}
-        >
-          {CASES.map((c, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className={`case-card ${c.large ? 'case-large' : ''}`}
+        <div className="carousel-viewport" style={{ 
+          position: 'relative', 
+          width: '100%',
+          overflow: 'visible'
+        }}>
+          <motion.div
+            className="carousel-track"
+            animate={{ x: -index * (cardWidth + gap) }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            style={{
+              display: 'flex',
+              gap: `${gap}px`,
+              cursor: 'grab',
+              paddingLeft: `calc(50% - ${cardWidth / 2}px)`,
+              paddingRight: `calc(50% - ${cardWidth / 2}px)`,
+            }}
+            drag="x"
+            onDragEnd={(_, info) => {
+              const threshold = 100;
+              if (info.offset.x < -threshold) nextStep();
+              else if (info.offset.x > threshold) prevStep();
+            }}
+          >
+            {CASES.map((item, i) => {
+              const isActive = i === index;
+              return (
+                <motion.div
+                  key={i}
+                  initial={false}
+                  animate={{ 
+                    opacity: isActive ? 1 : 0.3,
+                    scale: isActive ? 1 : 0.9,
+                    filter: isActive ? 'blur(0px)' : 'blur(2px)'
+                  }}
+                  transition={{ duration: 0.4 }}
+                  className="case-card"
+                  style={{
+                    flex: `0 0 ${cardWidth}px`,
+                    background: 'var(--surf1)',
+                    border: '1px solid var(--border)',
+                    borderRadius: 'var(--radius)',
+                    overflow: 'hidden',
+                    boxShadow: isActive ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)' : 'none',
+                    pointerEvents: isActive ? 'auto' : 'none',
+                    position: 'relative',
+                  }}
+                >
+                  <div className="case-thumb" style={{
+                    height: '220px',
+                    background: 'var(--surf2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}>
+                    <div className="case-thumb-pattern" style={{
+                      position: 'absolute',
+                      inset: 0,
+                      opacity: .12,
+                      backgroundImage: 'repeating-linear-gradient(45deg, var(--red) 0, var(--red) 1px, transparent 0, transparent 50%)',
+                      backgroundSize: '12px 12px',
+                    }} />
+                    <div className="case-thumb-label" style={{
+                      position: 'relative',
+                      zIndex: 1,
+                      fontFamily: 'var(--font-h)',
+                      fontSize: '3.5rem',
+                      fontWeight: 800,
+                      color: 'rgba(255,255,255,.1)',
+                      letterSpacing: '-.02em',
+                      textTransform: 'uppercase'
+                    }}>{item.label}</div>
+                  </div>
+
+                  <div className="case-body" style={{ padding: '3rem' }}>
+                    <div className="case-meta" style={{ display: 'flex', gap: '.6rem', marginBottom: '1.2rem', flexWrap: 'wrap' }}>
+                      <span className="case-type" style={{ fontSize: '.8rem', fontWeight: 700, background: 'var(--red-dim)', color: 'var(--red)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{item.type}</span>
+                      <span className="case-sector" style={{ fontSize: '.8rem', background: 'var(--surf2)', color: 'var(--muted)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{item.sector}</span>
+                    </div>
+                    <h3 style={{ fontFamily: 'var(--font-h)', fontSize: '2rem', fontWeight: 800, marginBottom: '1.2rem', lineHeight: 1.15 }}>{item.title}</h3>
+                    <p style={{ fontSize: '1.1rem', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '2.5rem' }}>{item.desc}</p>
+                    
+                    <div className="case-metrics" style={{ display: 'flex', gap: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
+                      {item.metrics.map((m, j) => (
+                        <div key={j} className="case-metric">
+                          <strong style={{ fontFamily: 'var(--font-h)', fontSize: '2rem', fontWeight: 800, color: 'var(--red)', display: 'block', lineHeight: 1 }}>{m.num}</strong>
+                          <span style={{ fontSize: '.85rem', color: 'var(--muted)', marginTop: '.5rem', display: 'block', textTransform: 'uppercase', letterSpacing: '.04em' }}>{m.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* Controls - Fixed to the viewport container */}
+          <div className="carousel-nav" style={{ 
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)',
+            width: '100vw',
+            maxWidth: '1200px',
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            pointerEvents: 'none',
+            zIndex: 20
+          }}>
+            <button 
+              onClick={prevStep}
+              className="carousel-btn prev"
               style={{
-                background: 'var(--surf1)',
+                pointerEvents: 'auto',
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+                background: 'rgba(23, 23, 23, 0.8)',
+                backdropFilter: 'blur(10px)',
                 border: '1px solid var(--border)',
-                borderRadius: 'var(--radius)',
-                overflow: 'hidden',
-                transition: 'border-color .25s, transform .25s',
-                gridColumn: c.large ? '1 / -1' : 'auto',
-              }}
-            >
-              <div className="case-thumb" style={{
-                height: c.large ? '240px' : '160px',
-                background: 'var(--surf2)',
+                color: 'var(--white)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
-                <div className="case-thumb-pattern" style={{
-                  position: 'absolute',
-                  inset: 0,
-                  opacity: .12,
-                  backgroundImage: 'repeating-linear-gradient(45deg, var(--red) 0, var(--red) 1px, transparent 0, transparent 50%)',
-                  backgroundSize: '12px 12px',
-                }} />
-                <div className="case-thumb-label" style={{
-                  position: 'relative',
-                  zIndex: 1,
-                  fontFamily: 'var(--font-h)',
-                  fontSize: '2rem',
-                  fontWeight: 800,
-                  color: 'rgba(255,255,255,.15)',
-                  letterSpacing: '-.02em',
-                }}>{c.label}</div>
-              </div>
+                cursor: 'pointer',
+                transition: 'all 0.3s'
+              }}
+            >
+              ←
+            </button>
+            <button 
+              onClick={nextStep}
+              className="carousel-btn next"
+              style={{
+                pointerEvents: 'auto',
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+                background: 'rgba(23, 23, 23, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid var(--border)',
+                color: 'var(--white)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.3s'
+              }}
+            >
+              →
+            </button>
+          </div>
+        </div>
 
-              <div className="case-body" style={{ padding: '1.75rem' }}>
-                <div className="case-meta" style={{ display: 'flex', gap: '.5rem', marginBottom: '.75rem', flexWrap: 'wrap' }}>
-                  <span className="case-type" style={{ fontSize: '.72rem', fontWeight: 700, background: 'var(--red-dim)', color: 'var(--red)', padding: '.2em .65em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{c.type}</span>
-                  <span className="case-sector" style={{ fontSize: '.72rem', background: 'var(--surf2)', color: 'var(--muted)', padding: '.2em .65em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{c.sector}</span>
-                </div>
-                <h3 style={{ fontFamily: 'var(--font-h)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '.5rem' }}>{c.title}</h3>
-                <p style={{ fontSize: '.88rem', color: 'var(--muted)', lineHeight: 1.65, marginBottom: '1.25rem' }}>{c.desc}</p>
-                
-                {c.quote && (
-                  <div style={{ display: 'flex', gap: '.6rem', marginBottom: '1.25rem' }}>
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--red-dim)', color: 'var(--red)', fontSize: '.65rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>JD</div>
-                    <p style={{ fontSize: '.82rem', color: 'var(--muted)', fontStyle: 'italic' }}>{c.quote}</p>
-                  </div>
-                )}
-
-                <div className="case-metrics" style={{ display: 'flex', gap: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border)' }}>
-                  {c.metrics.map((m, j) => (
-                    <div key={j} className="case-metric">
-                      <strong style={{ fontFamily: 'var(--font-h)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--red)', display: 'block', lineHeight: 1 }}>{m.num}</strong>
-                      <span style={{ fontSize: '.75rem', color: 'var(--muted)', marginTop: '.2rem', display: 'block' }}>{m.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+        {/* Dots */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '.8rem', marginTop: '5rem' }}>
+          {CASES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              style={{
+                width: i === index ? '32px' : '10px',
+                height: '10px',
+                borderRadius: '5px',
+                background: i === index ? 'var(--red)' : 'var(--border)',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
 
       <style jsx>{`
-        @media (max-width: 760px) {
-          .cases-grid { grid-template-columns: 1fr !important; }
-          .case-card { grid-column: auto !important; }
-          .case-thumb { height: 160px !important; }
-          :global(.cases-header p) { text-align: left !important; max-width: 100% !important; }
+        .carousel-btn:hover:not(:disabled) {
+          border-color: var(--red) !important;
+          color: var(--red) !important;
+          transform: scale(1.1);
         }
-        :global(.case-card:hover) {
-          border-color: var(--border2) !important;
-          transform: translateY(-3px);
+        @media (max-width: 1000px) {
+          .case-card { flex: 0 0 85vw !important; margin-left: -42.5vw !important; }
+          .carousel-track { margin-left: 42.5vw !important; }
+          .carousel-btn { width: 50px !important; height: 50px !important; }
+        }
+        @media (max-width: 600px) {
+          .case-body { padding: 2rem !important; }
+          .case-metrics { gap: 2rem !important; }
+          .carousel-nav { display: none !important; }
         }
       `}</style>
     </section>

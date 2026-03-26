@@ -13,12 +13,6 @@ const TESTIMONIALS = [
     avatar: "OL"
   },
   {
-    text: "Trabajé con Crisva para remodelar todo el look and feel de nuestra marca. Realizaron un prototipado y ejecutaron una auditoría UX&UI que puso nuestra plataforma lista para salir al mercado.",
-    author: "José Duarte",
-    role: "CEO — Firbid.com",
-    avatar: "JD"
-  },
-  {
     text: "Trabajar con Crisva ha sido una experiencia muy enriquecedora. Siempre nos daba alternativas para mejorar la propuesta. Si quieres diseñar la mejor experiencia son los indicados.",
     author: "Ronald Barzola",
     role: "CMO — Turismo Lab",
@@ -60,7 +54,13 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+            gap: '1.5rem',
+            maxWidth: '900px',
+            margin: '0 auto'
+          }}
         >
           {TESTIMONIALS.map((t, i) => (
             <motion.div

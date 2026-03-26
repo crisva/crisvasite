@@ -57,7 +57,7 @@ export default function FinalCTA() {
         >
           <span className="label">¿Listo para trascender?</span>
           <h2 className="h2" style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(2rem,4vw,3.2rem)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-.02em', margin: '1rem 0 1.5rem' }}>
-            Convierte tu producto en algo que <em style={{ fontStyle: 'normal', color: 'var(--red)' }}>importa.</em>
+            Convierte tu producto en algo que <em style={{ fontStyle: 'normal' }}>importa.</em>
           </h2>
           <p style={{ color: 'var(--muted)', fontSize: '1.05rem', marginBottom: '3rem', maxWidth: '540px', marginLeft: 'auto', marginRight: 'auto' }}>
             Agenda una llamada de 30 minutos. Te escuchamos, entendemos tu reto y te decimos con honestidad cómo podemos ayudarte a trascender.

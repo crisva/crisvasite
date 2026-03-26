@@ -70,9 +70,9 @@ export default function Hero() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="text-gradient"
                 style={{
                   display: 'inline-block',
-                  color: 'var(--red)',
                   fontStyle: 'italic',
                 }}
               >
@@ -111,20 +111,19 @@ export default function Hero() {
             ¿Listo para trascender?
           </p>
 
-          <a href="#contacto" className="btn-hero-primary" style={{
+          <a href="#contacto" className="btn-hero-primary bg-gradient" style={{
             padding: '16px 42px',
             borderRadius: '100px',
             fontSize: '18px',
             fontWeight: 600,
             letterSpacing: '0.01em',
             textDecoration: 'none',
-            background: 'var(--red)',
             color: '#fff',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-            boxShadow: '0 10px 40px -10px rgba(229, 48, 42, 0.5)'
+            boxShadow: '0 10px 40px -10px rgba(253, 118, 0, 0.4)'
           }}>
             Agenda tu llamada →
           </a>
@@ -134,7 +133,7 @@ export default function Hero() {
       <style jsx>{`
         .btn-hero-primary:hover {
           transform: translateY(-4px) scale(1.02);
-          box-shadow: 0 15px 50px -10px rgba(229, 48, 42, 0.7);
+          box-shadow: 0 15px 50px -10px rgba(253, 118, 0, 0.5);
           filter: brightness(1.1);
         }
         @media (max-width: 640px) {

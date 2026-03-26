@@ -6,6 +6,7 @@ import { fadeUp, staggerContainer, EASE } from '@/lib/animations';
 import TypingHeading from './TypingHeading';
 
 const TEAM = [
+  { initials: "CV", name: "Cristhian Valle", role: "Founder & Principal Designer", dept: "CEO · Product Designer · Entrepreneur", image: "/images/Team/Cristhian Valle CEO & Founder Principal Product Designer.png" },
   { initials: "SQ", name: "Sebastian Quintanilla", role: "UX Expert", dept: "Experience Design", image: "/images/Team/Sebastian Quintanilla UX Expert.png" },
   { initials: "MC", name: "Miguel Corahua", role: "Product Designer Expert", dept: "Product Design", image: "/images/Team/Miguel Corahua Product Designer Expert.png" },
   { initials: "CF", name: "Christian Fujiki", role: "Brand Expert", dept: "Branding & Strategy", image: "/images/Team/Christian Fujiki Brand Expert.png" },
@@ -60,54 +61,6 @@ export default function Team() {
           </p>
         </motion.div>
 
-        {/* Founder Card */}
-        <motion.div
-          className="team-founder"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1.5fr',
-            gap: '3rem',
-            alignItems: 'center',
-            background: 'var(--surf1)',
-            border: '1px solid var(--border)',
-            borderRadius: 'var(--radius)',
-            padding: '2.5rem',
-            marginBottom: '2rem',
-          }}
-        >
-          <div className="founder-avatar" style={{
-            aspectRatio: '1',
-            background: 'var(--surf2)',
-            borderRadius: 'var(--radius)',
-            overflow: 'hidden',
-            border: '1px solid var(--border)',
-          }}>
-            <img 
-              src="/images/Team/Cristhian Valle CEO & Founder Principal Product Designer.png" 
-              alt="Cristhian Valle" 
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-            />
-          </div>
-
-          <div className="founder-content">
-            <div className="founder-label" style={{ fontSize: '.72rem', fontWeight: 700, color: 'var(--red)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: '.5rem' }}>Founder & Principal Designer</div>
-            <h3 className="founder-name" style={{ fontFamily: 'var(--font-h)', fontSize: '1.8rem', fontWeight: 800, letterSpacing: '-.02em', marginBottom: '.25rem' }}>Cristhian Valle</h3>
-            <div className="founder-role" style={{ fontSize: '.9rem', color: 'var(--muted)', marginBottom: '1rem' }}>CEO · Product Designer · Entrepreneur · Podcaster</div>
-            <p className="founder-bio" style={{ fontSize: '.92rem', color: 'var(--muted)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
-              +10 años diseñando y construyendo productos digitales de la estrategia a la ejecución. He trabajado con startups y empresas en fintech, educación y e-commerce. Me mueve una idea simple: el diseño tiene que mejorar la vida de las personas y sostenerse como producto escalable.
-            </p>
-            <div className="founder-roles" style={{ display: 'flex', gap: '.5rem', flexWrap: 'wrap' }}>
-              {['Builder', 'Mentor (Hub Udep)', 'Podcaster (Hackeando Productos)', '10+ años'].map((role, i) => (
-                <span key={i} className="role-badge" style={{ background: 'var(--surf2)', border: '1px solid var(--border)', borderRadius: '6px', padding: '.3em .75em', fontSize: '.78rem', fontWeight: 600, color: 'var(--text)' }}>{role}</span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
         {/* Team Grid */}
         <motion.div
            className="team-grid"
@@ -150,7 +103,6 @@ export default function Team() {
               </div>
               <div className="member-name" style={{ fontSize: '.95rem', fontWeight: 700, marginBottom: '.2rem' }}>{m.name}</div>
               <div className="member-role" style={{ fontSize: '.8rem', color: 'var(--red)', fontWeight: 600 }}>{m.role}</div>
-              <div className="member-dept" style={{ fontSize: '.75rem', color: 'var(--muted)', marginTop: '.15rem' }}>{m.dept}</div>
             </motion.div>
            ))}
         </motion.div>

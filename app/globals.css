@@ -5,7 +5,9 @@
   --bg2:     #141414;
   --bg3:     #1C1C1C;
   --surface: #222222;
-  --red:     #E5302A;
+  --red:     #FD7600;
+  --red-end: #CF1921;
+  --red-gradient: linear-gradient(135deg, var(--red) 0%, var(--red-end) 100%);
   --red-dim: #8C1C18;
   --white:   #F0EDE8;
   --muted:   #7A7773;
@@ -13,6 +15,17 @@
   
   --font-display: 'Syne', sans-serif;
   --font-body:    'DM Sans', sans-serif;
+}
+
+.text-gradient {
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient {
+  background: var(--red-gradient);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -81,7 +94,10 @@ h3, .h3 {
 }
 
 em { 
-  color: var(--red); 
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-style: italic; 
 }
 
@@ -117,11 +133,13 @@ em {
 }
 
 .btn-primary { 
-  background: var(--red); 
+  background: var(--red-gradient); 
   color: white; 
+  transition: all 0.3s ease;
 }
 .btn-primary:hover { 
-  background: #c42722; 
+  filter: brightness(1.1);
+  transform: translateY(-2px);
 }
 
 .btn-ghost { 
@@ -141,4 +159,16 @@ em {
 }
 .card:hover { 
   border-color: rgba(240,237,232,0.25); 
+}
+
+.nav-link-hover {
+  transition: all 0.3s ease;
+}
+
+.nav-link-hover:hover {
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text;
+  color: transparent !important;
 }

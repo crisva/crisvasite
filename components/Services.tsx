@@ -109,7 +109,7 @@ export default function Services() {
     <section id="servicios" className="section" style={{ background: 'var(--bg)', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1600px' }}>
         <header style={{ marginBottom: '6rem', textAlign: 'center' }}>
-          <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
+          <span className="label text-gradient" style={{ display: 'block', marginBottom: '1.5rem' }}>
             Modelos de ejecución a medida.
           </span>
           <h2 className="display" style={{ margin: 0, textTransform: 'uppercase' }}>Nuestros Servicios</h2>
@@ -184,11 +184,16 @@ function ServiceCard({ service, isActive, onClick }: any) {
     <motion.div
       onClick={onClick}
       layout
+      whileHover={!isActive ? { 
+        scale: 1.02, 
+        borderColor: 'rgba(253, 118, 0, 0.4)',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
+      } : {}}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       style={{
         flex: isActive ? '4 0 0' : '1 0 0',
         background: isActive ? 'var(--bg2)' : 'var(--bg)',
-        border: isActive ? '1px solid rgba(229, 48, 42, 0.4)' : '1px solid var(--border)',
+        border: isActive ? '1px solid rgba(253, 118, 0, 0.3)' : '1px solid var(--border)',
         borderRadius: '32px',
         padding: isActive ? '5rem' : '3rem',
         cursor: isActive ? 'default' : 'pointer',
@@ -229,13 +234,12 @@ function ServiceCard({ service, isActive, onClick }: any) {
               }}
             />
             {/* Red Overlay */}
-            <div style={{
+            <div className="bg-gradient" style={{
               position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'var(--red)',
               opacity: 0.25,
               mixBlendMode: 'multiply',
             }} />
@@ -265,20 +269,22 @@ function ServiceCard({ service, isActive, onClick }: any) {
             width: '100%',
           }}
         >
-          <div style={{
-            background: isActive ? 'var(--red)' : 'rgba(255,255,255,0.05)',
-            color: isActive ? '#fff' : 'var(--red)',
-            padding: '1rem',
-            borderRadius: '16px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.3s ease',
-            flexShrink: 0
-          }}>
-            {service.icon}
-          </div>
+          {!isActive && (
+            <div style={{
+              background: 'rgba(255,255,255,0.05)',
+              color: 'var(--red)',
+              padding: '1rem',
+              borderRadius: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease',
+              flexShrink: 0
+            }}>
+              {service.icon}
+            </div>
+          )}
 
           <div style={{ 
             flex: 1,
@@ -337,7 +343,7 @@ function ServiceCard({ service, isActive, onClick }: any) {
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                   {service.includes.map((item: string, i: number) => (
                     <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '16px', color: 'var(--white)' }}>
-                      <div style={{ width: '8px', height: '8px', background: 'var(--red)', borderRadius: '50%' }} />
+                      <div className="bg-gradient" style={{ width: '8px', height: '8px', borderRadius: '50%' }} />
                       {item}
                     </li>
                   ))}
@@ -350,7 +356,7 @@ function ServiceCard({ service, isActive, onClick }: any) {
 
       <style jsx>{`
         .service-accordion-card:hover {
-          border-color: ${isActive ? 'rgba(229, 48, 42, 0.6)' : 'rgba(240, 237, 232, 0.3)'};
+          border-color: ${isActive ? 'rgba(253, 118, 0, 0.5)' : 'rgba(240, 237, 232, 0.3)'};
         }
       `}</style>
     </motion.div>

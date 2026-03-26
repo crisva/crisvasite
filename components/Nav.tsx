@@ -23,31 +23,71 @@ export default function Nav() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: '64px',
+            padding: '1.5rem 0',
             gap: '2rem',
           }}
         >
           <motion.a href="#" className="nav-logo" variants={fadeUp} style={{
-            fontFamily: 'var(--font-h)',
-            fontSize: '1.15rem',
-            fontWeight: 800,
-            letterSpacing: '-.02em',
             display: 'flex',
             alignItems: 'center',
-            gap: '.5rem',
           }}>
-            CRISVA<span style={{ color: 'var(--red)' }}>.</span>
+            <img 
+              src="/images/LOGO/LOGO-CRISVA.png" 
+              alt="Crisva Logo" 
+              style={{ height: '56px', width: 'auto' }} 
+            />
           </motion.a>
 
           <motion.ul className="nav-links" variants={fadeUp} style={{
             display: 'flex',
             gap: '2rem',
             listStyle: 'none',
+            fontFamily: 'var(--font-body)',
           }}>
-            <li><a href="#proceso" style={{ fontSize: '.9rem', color: 'var(--muted)', transition: 'color .2s' }}>Proceso</a></li>
-            <li><a href="#servicios" style={{ fontSize: '.9rem', color: 'var(--muted)', transition: 'color .2s' }}>Servicios</a></li>
-            <li><a href="#casos" style={{ fontSize: '.9rem', color: 'var(--muted)', transition: 'color .2s' }}>Casos</a></li>
-            <li><a href="#equipo" style={{ fontSize: '.9rem', color: 'var(--muted)', transition: 'color .2s' }}>Equipo</a></li>
+            <li>
+              <motion.a 
+                href="#proceso" 
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="nav-link-hover"
+                style={{ fontSize: '.9rem', color: 'var(--muted)', fontWeight: 500, display: 'inline-block' }}
+              >
+                Proceso
+              </motion.a>
+            </li>
+            <li>
+              <motion.a 
+                href="#servicios" 
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="nav-link-hover"
+                style={{ fontSize: '.9rem', color: 'var(--muted)', fontWeight: 500, display: 'inline-block' }}
+              >
+                Servicios
+              </motion.a>
+            </li>
+            <li>
+              <motion.a 
+                href="#casos" 
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="nav-link-hover"
+                style={{ fontSize: '.9rem', color: 'var(--muted)', fontWeight: 500, display: 'inline-block' }}
+              >
+                Casos
+              </motion.a>
+            </li>
+            <li>
+              <motion.a 
+                href="#equipo" 
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="nav-link-hover"
+                style={{ fontSize: '.9rem', color: 'var(--muted)', fontWeight: 500, display: 'inline-block' }}
+              >
+                Equipo
+              </motion.a>
+            </li>
           </motion.ul>
 
           <motion.div className="nav-cta" variants={fadeUp} style={{
@@ -55,16 +95,7 @@ export default function Nav() {
             gap: '.75rem',
             alignItems: 'center',
           }}>
-            <span className="nav-badge" style={{
-              background: 'var(--red-dim)',
-              color: 'var(--red)',
-              fontSize: '.7rem',
-              fontWeight: 700,
-              padding: '.15em .55em',
-              borderRadius: '4px',
-              letterSpacing: '.04em',
-            }}>2 spots disponibles</span>
-            <a href="#contacto" className="btn btn-primary" style={{ padding: '.55rem 1.25rem', fontSize: '.88rem' }}>
+            <a href="#contacto" className="btn btn-primary" style={{ padding: '.75rem 1.5rem', fontSize: '.88rem', lineHeight: '1' }}>
               Conversemos →
             </a>
           </motion.div>
