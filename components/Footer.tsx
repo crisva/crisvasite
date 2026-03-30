@@ -6,27 +6,27 @@ export default function Footer() {
       <div className="container">
         <div className="footer-inner" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '3rem' }}>
           <div className="footer-brand">
-            <div className="logo" style={{ fontFamily: 'var(--font-h)', fontSize: '1.15rem', fontWeight: 800 }}>
-              CRISVA<span style={{ color: 'var(--red)' }}>.</span>
-            </div>
-            <p style={{ color: 'var(--muted)', fontSize: '.88rem', marginTop: '.75rem', maxWidth: '260px', lineHeight: 1.65 }}>
+            <a href="#" className="logo">
+              <img 
+                src="/images/LOGO/LOGO-CRISVA.png" 
+                alt="Crisva Logo" 
+                style={{ height: '64px', width: 'auto', marginBottom: '.5rem' }} 
+              />
+            </a>
+            <p style={{ color: 'var(--muted)', fontSize: '.88rem', marginTop: '1.5rem', maxWidth: '260px', lineHeight: 1.65 }}>
               Diseñamos productos digitales que trascenden. Branding + UX + UI end-to-end para startups y empresas que quieren impacto real.
             </p>
-            <div className="footer-socials" style={{ display: 'flex', gap: '.5rem', marginTop: '1.5rem' }}>
-              <span className="tag" style={{ fontSize: '.72rem' }}>LinkedIn</span>
-              <span className="tag" style={{ fontSize: '.72rem' }}>Instagram</span>
-              <span className="tag" style={{ fontSize: '.72rem' }}>Podcast</span>
-            </div>
+
           </div>
 
           <div className="footer-col">
             <h5 style={{ fontFamily: 'var(--font-h)', fontSize: '.82rem', fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '1rem' }}>Servicios</h5>
             <div className="footer-links">
-              <a href="#servicios">Human Branding</a>
-              <a href="#servicios">Product Design E2E</a>
-              <a href="#servicios">UX Audit Express</a>
-              <a href="#servicios">Retainer Mensual</a>
-              <a href="#servicios">Design Sprint</a>
+              <a href="#product-design">Product Design</a>
+              <a href="#branding">Branding</a>
+              <a href="#strategy-design">Strategy Design</a>
+              <a href="#design-growth">Design Growth</a>
+              <a href="#web-desarrollo">Web Desarrollo</a>
             </div>
           </div>
 
@@ -37,7 +37,6 @@ export default function Footer() {
               <a href="#equipo">El equipo</a>
               <a href="#casos">Casos de éxito</a>
               <a href="#testimonios">Testimonios</a>
-              <a href="#podcast">Podcast</a>
             </div>
           </div>
 
@@ -45,9 +44,9 @@ export default function Footer() {
             <h5 style={{ fontFamily: 'var(--font-h)', fontSize: '.82rem', fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '1rem' }}>Contacto</h5>
             <div className="footer-links">
               <a href="mailto:c@crisva.com">c@crisva.com</a>
-              <span style={{ display: 'block', fontSize: '.88rem', color: 'var(--muted)', marginBottom: '.5rem' }}>LinkedIn</span>
-              <a href="#contacto">Agenda una llamada</a>
-              <span style={{ display: 'block', fontSize: '.88rem', color: 'var(--muted)', marginBottom: '.5rem' }}>Lima, Perú</span>
+              <a href="https://www.linkedin.com/in/crisva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://www.instagram.com/soycrisva/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="http://hackeandoproductos.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
             </div>
           </div>
         </div>
@@ -61,8 +60,25 @@ export default function Footer() {
       </div>
 
       <style jsx>{`
-        .footer-links a { display: block; font-size: .88rem; color: var(--muted); margin-bottom: .5rem; transition: color .2s; }
-        .footer-links a:hover { color: var(--text); }
+        .footer-links a { 
+          display: block; 
+          font-size: .88rem; 
+          color: var(--muted); 
+          margin-bottom: .5rem; 
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .footer-links a:hover { 
+          color: var(--red); 
+          transform: translateX(6px);
+        }
+        .tag {
+          transition: all 0.3s ease;
+        }
+        .tag:hover {
+          color: var(--red) !important;
+          border-color: var(--red) !important;
+          transform: translateY(-2px);
+        }
         @media (max-width: 760px) {
           .footer-inner { grid-template-columns: 1fr 1fr !important; }
         }

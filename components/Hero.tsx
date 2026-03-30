@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import GlobeBackground from './GlobeBackground';
+import VideoBackground from './VideoBackground';
 
 const WORDS = ["Product Design", "Growth", "Branding"];
 
@@ -30,8 +30,8 @@ export default function Hero() {
       color: '#fff',
       padding: '0 1.5rem',
     }}>
-      {/* 3D Globe Background */}
-      <GlobeBackground />
+      {/* Video Background Hero Replacement */}
+      <VideoBackground />
 
       {/* Dark Overlay for Contrast */}
       <div style={{

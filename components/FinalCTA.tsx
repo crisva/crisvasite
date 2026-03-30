@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeUp } from '@/lib/animations';
-import GlobeBackground from './GlobeBackground';
+import VideoBackground from './VideoBackground';
 
 export default function FinalCTA() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -34,8 +34,8 @@ export default function FinalCTA() {
 
   return (
     <section id="contacto" className="final-cta" style={{ backgroundColor: '#0c0c0c', position: 'relative', overflow: 'hidden' }}>
-      {/* 3D Globe Background */}
-      <GlobeBackground />
+      {/* Video Background Replacement */}
+      <VideoBackground />
 
       {/* Dark Overlay for Contrast (Mismas propiedades que el Hero) */}
       <div style={{

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const BoxIcon = () => (
@@ -37,6 +37,7 @@ const CodeIcon = () => (
 
 const SERVICES = [
   {
+    id: "product-design",
     icon: <BoxIcon />,
     label: "Diseño de\nProducto",
     title: "Product\nDesign",
@@ -50,8 +51,9 @@ const SERVICES = [
     ]
   },
   {
+    id: "branding",
     icon: <PaletteIcon />,
-    label: "Identidad\nVisual",
+    label: "Visual\nIdentidad",
     title: "Branding",
     image: "/images/services/branding.png",
     desc: "Identidades que van más allá del logo. Marcas que posicionan, conectan y convierten en cada touchpoint.",
@@ -63,8 +65,10 @@ const SERVICES = [
     ]
   },
   {
-    icon: <CompassIcon />,    label: "Visión\nEstratégica",
-    title: "Design\nStrategy",
+    id: "strategy-design",
+    icon: <CompassIcon />,
+    label: "Estratégica\nVisión",
+    title: "Strategy\nDesign",
     image: "/images/services/strategy.png",
     desc: "Claridad antes de ejecutar. Estrategia de diseño alineada al negocio, optimizando cada decisión táctica.",
     includes: [
@@ -75,9 +79,10 @@ const SERVICES = [
     ]
   },
   {
+    id: "design-growth",
     icon: <BarChartIcon />,
     label: "Optimización",
-    title: "Growth\nDesign",
+    title: "Design\nGrowth",
     image: "/images/services/growth.png",
     desc: "Diseño orientado a resultados: más conversión, más retención e impacto medible en los números.",
     includes: [
@@ -88,9 +93,10 @@ const SERVICES = [
     ]
   },
   {
+    id: "web-desarrollo",
     icon: <CodeIcon />,
-    label: "Producto\nVivo",
-    title: "Desarrollo\nWeb",
+    label: "Vivo\nProducto",
+    title: "Web\nDesarrollo",
     image: "/images/services/development.png",
     desc: "Del diseño al código real. Implementamos interfaces pixel-perfect sin pérdida de calidad técnica.",
     includes: [
@@ -104,6 +110,20 @@ const SERVICES = [
 
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      const index = SERVICES.findIndex(s => s.id === hash);
+      if (index !== -1) {
+        setActiveIndex(index);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   return (
     <section id="servicios" className="section" style={{ background: 'var(--bg)', overflow: 'hidden' }}>
@@ -182,6 +202,7 @@ export default function Services() {
 function ServiceCard({ service, isActive, onClick }: any) {
   return (
     <motion.div
+      id={service.id}
       onClick={onClick}
       layout
       whileHover={!isActive ? { 
