@@ -44,8 +44,8 @@ export default function Footer() {
             <h5 style={{ fontFamily: 'var(--font-h)', fontSize: '.82rem', fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '1rem' }}>Contacto</h5>
             <div className="footer-links">
               <a href="mailto:c@crisva.com">c@crisva.com</a>
-              <a href="https://www.linkedin.com/in/crisva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://www.instagram.com/soycrisva/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.linkedin.com/company/crisva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://www.instagram.com/crisvadesign/" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="http://hackeandoproductos.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
             </div>
           </div>
