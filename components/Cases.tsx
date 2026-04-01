@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
 import { fadeUp } from '@/lib/animations';
-
+import Link from 'next/link';
 import TypingHeading from './TypingHeading';
 
 const CASES = [
@@ -17,7 +17,8 @@ const CASES = [
       { num: "0 → 1", label: "MVP listo para mercado" },
       { num: "100%", label: "Proceso end-to-end cubierto" },
       { num: "8 sem", label: "De discovery a entrega final" }
-    ]
+    ],
+    slug: "firbid"
   },
   {
     label: "DYNAMO",
@@ -28,7 +29,8 @@ const CASES = [
     metrics: [
       { num: "Socio", label: "No proveedor, aliado" },
       { num: "Sistema", label: "Marca coherente en todos los touchpoints" }
-    ]
+    ],
+    slug: "dynamo"
   },
   {
     label: "FLUYEZ",
@@ -39,7 +41,8 @@ const CASES = [
     metrics: [
       { num: "+35%", label: "Conversión primeros 3 meses" },
       { num: "Brand Kit", label: "Completo para lanzamiento" }
-    ]
+    ],
+    slug: "fluyez"
   }
 ];
 
@@ -148,51 +151,59 @@ export default function Cases() {
                     position: 'relative',
                   }}
                 >
-                  <div className="case-thumb" style={{
-                    height: '220px',
-                    background: 'var(--surf2)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}>
-                    <div className="case-thumb-pattern" style={{
-                      position: 'absolute',
-                      inset: 0,
-                      opacity: .12,
-                      backgroundImage: 'repeating-linear-gradient(45deg, var(--red) 0, var(--red) 1px, transparent 0, transparent 50%)',
-                      backgroundSize: '12px 12px',
-                    }} />
-                    <div className="case-thumb-label" style={{
+                  <Link href={`/casos/${item.slug}`} draggable={false} style={{ display: 'block', height: '100%', textDecoration: 'none', color: 'inherit' }}>
+                    <div className="case-thumb" style={{
+                      height: '220px',
+                      background: 'var(--surf2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       position: 'relative',
-                      zIndex: 1,
-                      fontFamily: 'var(--font-h)',
-                      fontSize: '3.5rem',
-                      fontWeight: 800,
-                      color: 'rgba(255,255,255,.1)',
-                      letterSpacing: '-.02em',
-                      textTransform: 'uppercase'
-                    }}>{item.label}</div>
-                  </div>
+                      overflow: 'hidden',
+                    }}>
+                      <div className="case-thumb-pattern" style={{
+                        position: 'absolute',
+                        inset: 0,
+                        opacity: .12,
+                        backgroundImage: 'repeating-linear-gradient(45deg, var(--red) 0, var(--red) 1px, transparent 0, transparent 50%)',
+                        backgroundSize: '12px 12px',
+                      }} />
+                      <div className="case-thumb-label" style={{
+                        position: 'relative',
+                        zIndex: 1,
+                        fontFamily: 'var(--font-h)',
+                        fontSize: '3.5rem',
+                        fontWeight: 800,
+                        color: 'rgba(255,255,255,.1)',
+                        letterSpacing: '-.02em',
+                        textTransform: 'uppercase'
+                      }}>{item.label}</div>
+                    </div>
 
-                  <div className="case-body" style={{ padding: 'clamp(1.5rem, 5vw, 3rem)' }}>
-                    <div className="case-meta" style={{ display: 'flex', gap: '.6rem', marginBottom: '1.2rem', flexWrap: 'wrap' }}>
-                      <span className="case-type" style={{ fontSize: '.8rem', fontWeight: 700, background: 'var(--red-dim)', color: 'var(--red)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{item.type}</span>
-                      <span className="case-sector" style={{ fontSize: '.8rem', background: 'var(--surf2)', color: 'var(--muted)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{item.sector}</span>
+                    <div className="case-body" style={{ padding: 'clamp(1.5rem, 5vw, 3rem)' }}>
+                      <div className="case-meta" style={{ display: 'flex', gap: '.6rem', marginBottom: '1.2rem', flexWrap: 'wrap' }}>
+                        <span className="case-type" style={{ fontSize: '.8rem', fontWeight: 700, background: 'var(--red-dim)', color: 'var(--red)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{item.type}</span>
+                        <span className="case-sector" style={{ fontSize: '.8rem', background: 'var(--surf2)', color: 'var(--muted)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{item.sector}</span>
+                      </div>
+                      <h3 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 800, marginBottom: '1.2rem', lineHeight: 1.15 }}>{item.title}</h3>
+                      <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.1rem)', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '2.5rem' }}>{item.desc}</p>
+                      
+                      <div className="case-metrics" style={{ display: 'flex', gap: 'clamp(1.5rem, 5vw, 4rem)', paddingTop: '2rem', borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
+                        {item.metrics.map((m, j) => (
+                          <div key={j} className="case-metric" style={{ flex: '1 1 min-content' }}>
+                            <strong style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.8rem, 5vw, 2rem)', fontWeight: 800, color: 'var(--red)', display: 'block', lineHeight: 1 }}>{m.num}</strong>
+                            <span style={{ fontSize: '.85rem', color: 'var(--muted)', marginTop: '.5rem', display: 'block', textTransform: 'uppercase', letterSpacing: '.04em' }}>{m.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'flex-start' }}>
+                        <span className="btn btn-primary" style={{ padding: '0.8rem 2rem', borderRadius: '30px', fontWeight: 600 }}>
+                          Ver caso de estudio &rarr;
+                        </span>
+                      </div>
                     </div>
-                    <h3 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 800, marginBottom: '1.2rem', lineHeight: 1.15 }}>{item.title}</h3>
-                    <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.1rem)', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '2.5rem' }}>{item.desc}</p>
-                    
-                    <div className="case-metrics" style={{ display: 'flex', gap: 'clamp(1.5rem, 5vw, 4rem)', paddingTop: '2rem', borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
-                      {item.metrics.map((m, j) => (
-                        <div key={j} className="case-metric" style={{ flex: '1 1 min-content' }}>
-                          <strong style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.8rem, 5vw, 2rem)', fontWeight: 800, color: 'var(--red)', display: 'block', lineHeight: 1 }}>{m.num}</strong>
-                          <span style={{ fontSize: '.85rem', color: 'var(--muted)', marginTop: '.5rem', display: 'block', textTransform: 'uppercase', letterSpacing: '.04em' }}>{m.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  </Link>
                 </motion.div>
               );
             })}

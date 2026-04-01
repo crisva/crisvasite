@@ -172,3 +172,9 @@ em {
   background-clip: text;
   color: transparent !important;
 }
+
+@media (max-width: 768px) {
+  .section > .container > div {
+    grid-template-columns: 1fr !important;
+  }
+}
