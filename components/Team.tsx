@@ -14,7 +14,7 @@ const TEAM = [
   { initials: "TP", name: "Tata Portal", role: "Art Experience Designer", dept: "Art Direction", image: "/images/Team/Tata Portal Art Experience Designer.png" },
   { initials: "GV", name: "Geomar Ventura", role: "UI Expert", dept: "Interface Design", image: "/images/Team/Geomar Ventura UI Expert.png" },
   { initials: "BC", name: "Brenda Campos", role: "Design Strategist", dept: "Design Strategy", image: "/images/Team/Brenda Campos Design Strategist.png" },
-  { initials: "LP", name: "Lucas Patanó", role: "Growth Expert", dept: "Growth & Product", image: "/images/Team/Lucas Patanó Growth Expert.png" },
+  { initials: "LP", name: "The crack", role: "Growth Expert", dept: "Growth & Product", image: "" },
   { initials: "DC", name: "Diana Coronado", role: "UX & UI Designer", dept: "Product Design", image: "/images/Team/Diana Coronado UX & UI Designer.png" },
   { initials: "JM", name: "Jamil Mori", role: "UX Designer", dept: "Interaction Design", image: "/images/Team/Jamil Mori UX Designer.png" },
   { initials: "IV", name: "Israel Valencia", role: "Design Entry", dept: "Design Operations", image: "/images/Team/Israel Valencia Design Entry.png" }
@@ -93,13 +93,27 @@ export default function Team() {
                 background: 'var(--surf2)',
                 overflow: 'hidden',
                 marginBottom: '1rem',
-                border: '1px solid var(--border)'
+                border: '1px solid var(--border)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}>
-                <img 
-                  src={m.image} 
-                  alt={m.name} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                />
+                {m.image ? (
+                  <img 
+                    src={m.image} 
+                    alt={m.name} 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  />
+                ) : (
+                  <span style={{ 
+                    fontSize: '4rem', 
+                    color: 'var(--red)', 
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: '800',
+                    opacity: 0.8,
+                    textShadow: '0 0 20px rgba(253, 118, 0, 0.3)'
+                  }}>?</span>
+                )}
               </div>
               <div className="member-name" style={{ fontSize: '.95rem', fontWeight: 700, marginBottom: '.2rem' }}>{m.name}</div>
               <div className="member-role" style={{ fontSize: '.8rem', color: 'var(--red)', fontWeight: 600 }}>{m.role}</div>

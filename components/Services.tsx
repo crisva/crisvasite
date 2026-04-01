@@ -53,7 +53,7 @@ const SERVICES = [
   {
     id: "branding",
     icon: <PaletteIcon />,
-    label: "Visual\nIdentidad",
+    label: "Identidad\nVisual",
     title: "Branding",
     image: "/images/services/branding.png",
     desc: "Identidades que van más allá del logo. Marcas que posicionan, conectan y convierten en cada touchpoint.",
@@ -67,7 +67,7 @@ const SERVICES = [
   {
     id: "strategy-design",
     icon: <CompassIcon />,
-    label: "Estratégica\nVisión",
+    label: "Visión\nEstratégica",
     title: "Strategy\nDesign",
     image: "/images/services/strategy.png",
     desc: "Claridad antes de ejecutar. Estrategia de diseño alineada al negocio, optimizando cada decisión táctica.",
@@ -95,8 +95,8 @@ const SERVICES = [
   {
     id: "web-desarrollo",
     icon: <CodeIcon />,
-    label: "Vivo\nProducto",
-    title: "Web\nDesarrollo",
+    label: "Producto\nVivo",
+    title: "Desarrollo\nWeb",
     image: "/images/services/development.png",
     desc: "Del diseño al código real. Implementamos interfaces pixel-perfect sin pérdida de calidad técnica.",
     includes: [
@@ -224,7 +224,7 @@ function ServiceCard({ service, isActive, onClick }: any) {
         flexDirection: 'column',
         gap: '3rem',
       }}
-      className="service-accordion-card"
+      className={`service-accordion-card ${isActive ? 'active' : ''}`}
     >
       {/* Background Image Wrapper (Visible when active) */}
       <AnimatePresence>
@@ -307,17 +307,7 @@ function ServiceCard({ service, isActive, onClick }: any) {
             </div>
           )}
 
-          <div style={{ 
-            flex: 1,
-            display: 'flex',
-            flexDirection: isActive ? 'column' : 'column',
-            alignItems: isActive ? 'flex-start' : 'center',
-            justifyContent: isActive ? 'flex-start' : 'flex-end',
-            gap: isActive ? '0.5rem' : '1.5rem',
-            writingMode: isActive ? 'horizontal-tb' : 'vertical-lr',
-            transform: isActive ? 'none' : 'rotate(180deg)',
-            transition: 'all 0.6s ease'
-          }}>
+          <div className="service-card-title-wrapper">
             <span className="label" style={{ 
               fontSize: isActive ? '12px' : '14px', 
               color: isActive ? 'rgba(255,255,255,0.6)' : 'var(--muted)', 
@@ -376,6 +366,36 @@ function ServiceCard({ service, isActive, onClick }: any) {
       </div>
 
       <style jsx>{`
+        .service-card-title-wrapper {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 1.5rem;
+          writing-mode: vertical-lr;
+          transform: rotate(180deg);
+          transition: all 0.6s ease;
+        }
+        .service-accordion-card.active .service-card-title-wrapper {
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 0.5rem;
+          writing-mode: horizontal-tb;
+          transform: none;
+        }
+
+        @media (max-width: 1024px) {
+          .service-card-title-wrapper {
+            writing-mode: horizontal-tb !important;
+            transform: none !important;
+            justify-content: center !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 1rem !important;
+          }
+        }
+
         .service-accordion-card:hover {
           border-color: ${isActive ? 'rgba(253, 118, 0, 0.5)' : 'rgba(240, 237, 232, 0.3)'};
         }

@@ -29,14 +29,14 @@ export default function StickyBand() {
       }}
     >
       <p style={{ fontSize: '.85rem', fontWeight: 500, whiteSpace: 'nowrap' }} className="band-text">
-        "¿Listo para trascender?"
+        ¿Listo para trascender?
       </p>
       <a
         href="#contacto"
         className="btn btn-primary"
         style={{ padding: '.6rem 1.4rem', fontSize: '.85rem', borderRadius: '100px' }}
       >
-        Agenda tu llamada →
+        Conversemos
       </a>
 
       <style jsx>{`

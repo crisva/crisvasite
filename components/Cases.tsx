@@ -46,6 +46,20 @@ const CASES = [
 export default function Cases() {
   const [index, setIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [cardWidth, setCardWidth] = useState(860);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      // Set to screen width minus padding on mobile, cap at 860 for desktop
+      setCardWidth(window.innerWidth < 892 ? window.innerWidth - 32 : 860);
+    };
+    
+    // Set initial size
+    handleResize();
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const nextStep = () => {
     setIndex((prev) => (prev + 1) % CASES.length);
@@ -55,8 +69,6 @@ export default function Cases() {
     setIndex((prev) => (prev - 1 + CASES.length) % CASES.length);
   };
 
-  // Card parameters
-  const cardWidth = 860;
   const gap = 32;
 
   return (
@@ -164,18 +176,18 @@ export default function Cases() {
                     }}>{item.label}</div>
                   </div>
 
-                  <div className="case-body" style={{ padding: '3rem' }}>
+                  <div className="case-body" style={{ padding: 'clamp(1.5rem, 5vw, 3rem)' }}>
                     <div className="case-meta" style={{ display: 'flex', gap: '.6rem', marginBottom: '1.2rem', flexWrap: 'wrap' }}>
                       <span className="case-type" style={{ fontSize: '.8rem', fontWeight: 700, background: 'var(--red-dim)', color: 'var(--red)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{item.type}</span>
                       <span className="case-sector" style={{ fontSize: '.8rem', background: 'var(--surf2)', color: 'var(--muted)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.04em', textTransform: 'uppercase' }}>{item.sector}</span>
                     </div>
-                    <h3 style={{ fontFamily: 'var(--font-h)', fontSize: '2rem', fontWeight: 800, marginBottom: '1.2rem', lineHeight: 1.15 }}>{item.title}</h3>
-                    <p style={{ fontSize: '1.1rem', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '2.5rem' }}>{item.desc}</p>
+                    <h3 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 800, marginBottom: '1.2rem', lineHeight: 1.15 }}>{item.title}</h3>
+                    <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.1rem)', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '2.5rem' }}>{item.desc}</p>
                     
-                    <div className="case-metrics" style={{ display: 'flex', gap: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
+                    <div className="case-metrics" style={{ display: 'flex', gap: 'clamp(1.5rem, 5vw, 4rem)', paddingTop: '2rem', borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
                       {item.metrics.map((m, j) => (
-                        <div key={j} className="case-metric">
-                          <strong style={{ fontFamily: 'var(--font-h)', fontSize: '2rem', fontWeight: 800, color: 'var(--red)', display: 'block', lineHeight: 1 }}>{m.num}</strong>
+                        <div key={j} className="case-metric" style={{ flex: '1 1 min-content' }}>
+                          <strong style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.8rem, 5vw, 2rem)', fontWeight: 800, color: 'var(--red)', display: 'block', lineHeight: 1 }}>{m.num}</strong>
                           <span style={{ fontSize: '.85rem', color: 'var(--muted)', marginTop: '.5rem', display: 'block', textTransform: 'uppercase', letterSpacing: '.04em' }}>{m.label}</span>
                         </div>
                       ))}

@@ -16,7 +16,7 @@ export default function FinalCTA() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('https://formspree.io/f/xvgzogvq', { // Usar ID real de Formspree si se tiene
+      const response = await fetch('https://formspree.io/c@crisva.com', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -104,7 +104,7 @@ export default function FinalCTA() {
                 </div>
 
                 <button type="submit" className="btn btn-primary form-submit" disabled={status === 'loading'} style={{ width: '100%', padding: '1rem', fontSize: '1rem', fontWeight: 700, letterSpacing: '.02em', marginTop: '.5rem', justifyContent: 'center' }}>
-                  {status === 'loading' ? 'Enviando...' : 'Enviar y agendar llamada →'}
+                  {status === 'loading' ? 'Enviando...' : 'Conversemos'}
                 </button>
                 
                 {status === 'error' && <p style={{ color: 'var(--red)', fontSize: '.85rem', marginTop: '1rem', textAlign: 'center' }}>Hubo un error. Por favor intenta de nuevo.</p>}

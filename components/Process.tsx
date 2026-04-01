@@ -280,6 +280,12 @@ export default function Process() {
             height: auto !important;
             padding: 2rem 1.5rem !important;
             min-width: 0 !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          :global(.process-card div) {
+            align-items: center !important;
+            text-align: center !important;
           }
           :global(.process-card.active) {
             padding: 2.5rem 1.5rem !important;

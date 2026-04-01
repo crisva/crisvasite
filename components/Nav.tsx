@@ -96,7 +96,7 @@ export default function Nav() {
             alignItems: 'center',
           }}>
             <a href="#contacto" className="btn btn-primary" style={{ padding: '.75rem 1.5rem', fontSize: '.88rem', lineHeight: '1' }}>
-              Conversemos →
+              Conversemos
             </a>
           </motion.div>
         </motion.div>

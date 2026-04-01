@@ -27,7 +27,7 @@ export default function MidCTA() {
             Agenda una llamada de 30 minutos. Sin compromiso, sin pitch agresivo. Te decimos con honestidad si podemos ayudarte — y cómo.
           </p>
           <div className="actions" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#contacto" className="btn btn-primary">Agendar llamada de diagnóstico →</a>
+            <a href="#contacto" className="btn btn-primary">Conversemos</a>
             <a href="#casos" className="btn btn-ghost">Ver qué hemos construido</a>
           </div>
           <div className="availability" style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', fontSize: '.82rem', color: 'var(--muted)', marginTop: '1.25rem' }}>

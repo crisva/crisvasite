@@ -32,6 +32,7 @@ export default function TypingHeading({ text, className, style }: { text: string
       style={style}
     >
       {characters.map((char, index) => (
+        char === "\n" ? <br key={index} /> :
         <motion.span key={index} variants={child}>
           {char === " " ? "\u00A0" : char}
         </motion.span>

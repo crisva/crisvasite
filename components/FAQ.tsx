@@ -7,10 +7,6 @@ import TypingHeading from './TypingHeading';
 
 const FAQS = [
   {
-    q: "¿Por qué no contratar un diseñador interno?",
-    a: "Un diseñador interno cuesta entre $2,500–$5,000/mes con beneficios, y raramente cubre las 5 disciplinas de nuestro equipo. Crisva te da 9 especialistas por el costo de 1–2 salarios, con experiencia cross-industria y sin curva de aprendizaje."
-  },
-  {
     q: "¿Cuánto tiempo toma un proyecto típico?",
     a: "Un proceso end-to-end completo (Branding + UX + UI) toma entre 8 y 12 semanas. Un UX Audit toma 2–3 semanas. Un branding sin producto digital, 4–6 semanas. Todo depende del alcance acordado desde el día 1."
   },
@@ -67,7 +63,6 @@ export default function FAQ() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}
         >
           {FAQS.map((faq, i) => (
             <motion.div
@@ -105,8 +100,15 @@ export default function FAQ() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 760px) {
-          .faq-grid { grid-template-columns: 1fr !important; }
+        .faq-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
+        @media (max-width: 768px) {
+          .faq-grid { 
+            grid-template-columns: 1fr; 
+          }
         }
       `}</style>
     </section>

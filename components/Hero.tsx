@@ -125,7 +125,7 @@ export default function Hero() {
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             boxShadow: '0 10px 40px -10px rgba(253, 118, 0, 0.4)'
           }}>
-            Agenda tu llamada →
+            Conversemos
           </a>
         </motion.div>
       </div>
