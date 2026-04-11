@@ -18,7 +18,7 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: 'Crisva Design Lab — Product Design & Branding Agency',
+  title: 'Crisva Design Lab — End to End Product & Design',
   description: 'Agencia de Product Design y Branding en Lima, Perú. Diseñamos productos digitales que trascienden con un proceso humano y senior.',
   openGraph: {
     title: 'Crisva Design Lab',

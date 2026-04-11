@@ -10,7 +10,7 @@ const CASES = [
   {
     label: "FIRBID",
     type: "UX & UI",
-    sector: "Fintech · Plataforma de subastas",
+    sector: "Fintech · Plataforma de subasta de dólares",
     title: "Firbid — De idea a producto listo para el mercado",
     desc: "Crisva tomó la plataforma de Firbid desde el prototipado hasta la auditoría UX&UI completa, poniéndola lista para salir al mercado por primera vez. Proceso end-to-end que cubrió flujo de registro, onboarding, sistema de pujas y transacción final.",
     metrics: [
@@ -50,20 +50,20 @@ export default function Cases() {
   const [index, setIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(860);
-  
+
   useEffect(() => {
     const handleResize = () => {
       // Set to screen width minus padding on mobile, cap at 860 for desktop
       setCardWidth(window.innerWidth < 892 ? window.innerWidth - 32 : 860);
     };
-    
+
     // Set initial size
     handleResize();
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
+
   const nextStep = () => {
     setIndex((prev) => (prev + 1) % CASES.length);
   };
@@ -88,11 +88,11 @@ export default function Cases() {
           <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
             Productos que trascendieron
           </span>
-          <TypingHeading 
-            text="Casos de éxito" 
+          <TypingHeading
+            text="Casos de éxito"
             className="display"
-            style={{ 
-              margin: '0 auto 1.5rem', 
+            style={{
+              margin: '0 auto 1.5rem',
               fontSize: 'clamp(3rem, 8vw, 5rem)',
               textTransform: 'uppercase',
               letterSpacing: '-0.02em',
@@ -104,8 +104,8 @@ export default function Cases() {
           </p>
         </motion.div>
 
-        <div className="carousel-viewport" style={{ 
-          position: 'relative', 
+        <div className="carousel-viewport" style={{
+          position: 'relative',
           width: '100%',
           overflow: 'visible'
         }}>
@@ -133,7 +133,7 @@ export default function Cases() {
                 <motion.div
                   key={i}
                   initial={false}
-                  animate={{ 
+                  animate={{
                     opacity: isActive ? 1 : 0.3,
                     scale: isActive ? 1 : 0.9,
                     filter: isActive ? 'blur(0px)' : 'blur(2px)'
@@ -187,7 +187,7 @@ export default function Cases() {
                       </div>
                       <h3 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 800, marginBottom: '1.2rem', lineHeight: 1.15 }}>{item.title}</h3>
                       <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.1rem)', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '2.5rem' }}>{item.desc}</p>
-                      
+
                       <div className="case-metrics" style={{ display: 'flex', gap: 'clamp(1.5rem, 5vw, 4rem)', paddingTop: '2rem', borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
                         {item.metrics.map((m, j) => (
                           <div key={j} className="case-metric" style={{ flex: '1 1 min-content' }}>
@@ -196,7 +196,7 @@ export default function Cases() {
                           </div>
                         ))}
                       </div>
-                      
+
                       <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'flex-start' }}>
                         <span className="btn btn-primary" style={{ padding: '0.8rem 2rem', borderRadius: '30px', fontWeight: 600 }}>
                           Ver caso de estudio &rarr;
@@ -210,19 +210,19 @@ export default function Cases() {
           </motion.div>
 
           {/* Controls - Fixed to the viewport container */}
-          <div className="carousel-nav" style={{ 
-            position: 'absolute', 
-            top: '50%', 
-            left: '50%', 
+          <div className="carousel-nav" style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '100vw',
             maxWidth: '1200px',
-            display: 'flex', 
-            justifyContent: 'space-between', 
+            display: 'flex',
+            justifyContent: 'space-between',
             pointerEvents: 'none',
             zIndex: 20
           }}>
-            <button 
+            <button
               onClick={prevStep}
               className="carousel-btn prev"
               style={{
@@ -243,7 +243,7 @@ export default function Cases() {
             >
               ←
             </button>
-            <button 
+            <button
               onClick={nextStep}
               className="carousel-btn next"
               style={{

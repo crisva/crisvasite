@@ -31,10 +31,10 @@ export default function Nav() {
             display: 'flex',
             alignItems: 'center',
           }}>
-            <img 
-              src="/images/LOGO/LOGO-CRISVA.png" 
-              alt="Crisva Logo" 
-              style={{ height: '56px', width: 'auto' }} 
+            <img
+              src="/images/LOGO/LOGO-CRISVA.png"
+              alt="Crisva Logo"
+              style={{ height: '56px', width: 'auto' }}
             />
           </motion.a>
 
@@ -45,8 +45,8 @@ export default function Nav() {
             fontFamily: 'var(--font-body)',
           }}>
             <li>
-              <motion.a 
-                href="#proceso" 
+              <motion.a
+                href="#proceso"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="nav-link-hover"
@@ -56,8 +56,8 @@ export default function Nav() {
               </motion.a>
             </li>
             <li>
-              <motion.a 
-                href="#servicios" 
+              <motion.a
+                href="#servicios"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="nav-link-hover"
@@ -67,8 +67,8 @@ export default function Nav() {
               </motion.a>
             </li>
             <li>
-              <motion.a 
-                href="#casos" 
+              <motion.a
+                href="#casos"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="nav-link-hover"
@@ -78,8 +78,8 @@ export default function Nav() {
               </motion.a>
             </li>
             <li>
-              <motion.a 
-                href="#equipo" 
+              <motion.a
+                href="#equipo"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="nav-link-hover"
@@ -95,7 +95,7 @@ export default function Nav() {
             gap: '.75rem',
             alignItems: 'center',
           }}>
-            <a href="#contacto" className="btn btn-primary" style={{ padding: '.75rem 1.5rem', fontSize: '.88rem', lineHeight: '1' }}>
+            <a href="/#contacto" className="btn btn-primary" style={{ padding: '.75rem 1.5rem', fontSize: '.88rem', lineHeight: '1' }}>
               Conversemos
             </a>
           </motion.div>

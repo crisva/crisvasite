@@ -10,31 +10,31 @@ const STEPS = [
     num: "01",
     label: "DISEÑO DE\nPRODUCTO",
     title: "Product\nDesign",
-    desc: "Definimos la arquitectura, flujos y prototipos que dan vida a tu idea digital.",
-    tag: "2-4 semanas",
+    desc: "Convertimos tu idea en arquitectura real: flujos, prototipos y sistemas que los equipos pueden construir y los usuarios entienden desde el primer clic.",
+    tag: "3 a 5 semanas",
     icon: "📦"
   },
   {
     num: "02",
     label: "IDENTIDAD\nVISUAL",
     title: "Branding",
-    desc: "Construimos sistemas visuales que no solo se ven bien, sino que comunican la esencia de tu proyecto.",
-    tag: "2-3 semanas",
+    desc: "Tu marca no es tu logo. Es la impresión que dejas antes, durante y después del producto. La construimos para que dure y para que convierta.",
+    tag: "2 a 4 semanas",
     icon: "🎨"
   },
   {
     num: "03",
     label: "VISIÓN\nESTRATÉGICA",
     title: "Design\nStrategy",
-    desc: "Alineamos los objetivos de negocio con las necesidades del usuario para trazar una ruta de éxito.",
-    tag: "1-2 semanas",
+    desc: "Antes de diseñar una sola pantalla, entendemos tu negocio. Priorizamos lo que mueve la aguja, no lo que se ve bien en presentaciones.",
+    tag: "2 a 3 semanas",
     icon: "🧭"
   },
   {
     num: "04",
     label: "OPTIMIZACIÓN\nESTRATÉGICA",
     title: "Growth\nDesign",
-    desc: "Iteramos sobre el producto real para maximizar conversiones y mejorar la retención de usuarios.",
+    desc: "Lanzar es el inicio. Iteramos con datos reales para convertir más, retener mejor y crecer sin quemar presupuesto en cambios a ciegas.",
     tag: "Continuo",
     icon: "📈"
   },
@@ -42,16 +42,16 @@ const STEPS = [
     num: "05",
     label: "PRODUCTO\nVIVO",
     title: "Desarrollo\nVivo",
-    desc: "Tu producto evoluciona con el mercado. No es una entrega estática, es un ecosistema en crecimiento.",
-    tag: "4-6 semanas",
+    desc: "El código es parte del diseño. Implementamos lo que diseñamos sin pérdida de calidad entre Figma y producción. Lo que ves es lo que se construye.",
+    tag: "5 a 8 semanas",
     icon: "⚡"
   },
   {
     num: "06",
     label: "ACOMPAÑAMIENTO\nCONTINUO",
     title: "Soporte\nContinuo",
-    desc: "Estamos ahí después del lanzamiento para asegurar que cada actualización sume valor real.",
-    tag: "Ilimitado",
+    desc: "No desaparecemos al entregar. Somos el equipo que sigue ahí cuando el mercado cambia, los usuarios evolucionan y el producto necesita crecer.",
+    tag: "Mes a mes",
     icon: "🚀"
   }
 ];
@@ -71,20 +71,20 @@ export default function Process() {
           style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto 5rem' }}
         >
           <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
-            El proceso que hace que los productos trasciendan
+            Del problema al producto, sin perder el hilo.
           </span>
-          <TypingHeading 
-            text="EL MÉTODO" 
+          <TypingHeading
+            text="EL MÉTODO"
             className="display"
-            style={{ 
-              margin: '0 auto 1.5rem', 
+            style={{
+              margin: '0 auto 1.5rem',
               fontSize: 'clamp(3rem, 8vw, 5rem)',
               textTransform: 'uppercase',
               letterSpacing: '-0.02em'
             }}
           />
           <p className="body-lg" style={{ color: 'var(--muted)', fontSize: '1.2rem', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto' }}>
-            Cinco fases integradas que van desde descubrir qué construir hasta asegurar que funcione en el mundo real.
+            No trabajamos en fases que se ignoran entre sí. Cada paso construye sobre el anterior para que el producto final sea coherente, funcional y listo para crecer.
           </p>
         </motion.div>
 
@@ -119,7 +119,7 @@ export default function Process() {
                 }}
               >
                 {/* Number Background */}
-                <motion.div 
+                <motion.div
                   layout="position"
                   style={{
                     fontFamily: 'var(--font-display)',
@@ -136,18 +136,18 @@ export default function Process() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', flex: 1, justifyContent: isActive ? 'flex-start' : 'center' }}>
                   <motion.div layout="position" style={{ fontSize: isActive ? '2.5rem' : '1.8rem', transition: 'font-size 0.4s ease' }}>{s.icon}</motion.div>
-                  
+
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     <AnimatePresence>
                       {isActive && (
-                        <motion.span 
+                        <motion.span
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
-                          style={{ 
-                            fontSize: '0.75rem', 
-                            color: 'var(--red)', 
-                            letterSpacing: '0.15em', 
+                          style={{
+                            fontSize: '0.75rem',
+                            color: 'var(--red)',
+                            letterSpacing: '0.15em',
                             fontWeight: 700,
                             textTransform: 'uppercase',
                             whiteSpace: 'pre-line',
@@ -159,12 +159,12 @@ export default function Process() {
                       )}
                     </AnimatePresence>
 
-                    <motion.h4 
+                    <motion.h4
                       layout="position"
-                      style={{ 
-                        fontFamily: 'var(--font-display)', 
-                        fontSize: isActive ? '3rem' : '1.1rem', 
-                        fontWeight: 600, 
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: isActive ? '3rem' : '1.1rem',
+                        fontWeight: 600,
                         color: isActive ? 'var(--white)' : 'var(--muted)',
                         margin: 0,
                         writingMode: 'horizontal-tb',
@@ -188,9 +188,9 @@ export default function Process() {
                       transition={{ duration: 0.3, delay: 0.2 }}
                       style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
                     >
-                      <p style={{ 
-                        fontSize: '1.1rem', 
-                        color: 'rgba(255,255,255,0.7)', 
+                      <p style={{
+                        fontSize: '1.1rem',
+                        color: 'rgba(255,255,255,0.7)',
                         lineHeight: 1.6,
                         fontWeight: 300,
                         margin: 0,
@@ -231,22 +231,22 @@ export default function Process() {
           })}
         </motion.div>
 
-        <motion.p 
+        <motion.p
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false }}
-          style={{ 
-            color: 'var(--muted)', 
-            fontSize: '1rem', 
-            textAlign: 'center', 
+          style={{
+            color: 'var(--muted)',
+            fontSize: '1rem',
+            textAlign: 'center',
             marginTop: '4rem',
             maxWidth: '600px',
             margin: '4rem auto 0',
             lineHeight: 1.6
           }}
         >
-          Proceso completo: <strong style={{ color: 'var(--text)' }}>6–10 semanas</strong> <br/> Todo en un solo equipo, sin fricciones entre disciplinas
+          De cero a lanzamiento: <strong style={{ color: 'var(--text)' }}>8 a 12 semanas</strong> <br /> Un solo equipo, cero fricción entre disciplinas.
         </motion.p>
       </div>
 

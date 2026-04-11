@@ -7,14 +7,14 @@ export default function Footer() {
         <div className="footer-inner" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '3rem' }}>
           <div className="footer-brand">
             <a href="#" className="logo">
-              <img 
-                src="/images/LOGO/LOGO-CRISVA.png" 
-                alt="Crisva Logo" 
-                style={{ height: '64px', width: 'auto', marginBottom: '.5rem' }} 
+              <img
+                src="/images/LOGO/LOGO-CRISVA.png"
+                alt="Crisva Logo"
+                style={{ height: '64px', width: 'auto', marginBottom: '.5rem' }}
               />
             </a>
             <p style={{ color: 'var(--muted)', fontSize: '.88rem', marginTop: '1.5rem', maxWidth: '260px', lineHeight: 1.65 }}>
-              Diseñamos productos digitales que trascenden. Branding + UX + UI end-to-end para startups y empresas que quieren impacto real.
+              Diseñamos productos digitales que trascenden. Branding + Product & Design end-to-end para startups y empresas que quieren impacto real.
             </p>
 
           </div>
@@ -46,7 +46,6 @@ export default function Footer() {
               <a href="mailto:c@crisva.com">c@crisva.com</a>
               <a href="https://www.linkedin.com/company/crisva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href="https://www.instagram.com/crisvadesign/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="http://hackeandoproductos.com/" target="_blank" rel="noopener noreferrer">Podcast</a>
             </div>
           </div>
         </div>
@@ -54,7 +53,7 @@ export default function Footer() {
         <div className="footer-bottom" style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <p style={{ fontSize: '.82rem', color: 'var(--muted)' }}>© 2026 Crisva Design Lab. Todos los derechos reservados.</p>
           <div className="made" style={{ display: 'flex', alignItems: 'center', gap: '.35rem', fontSize: '.82rem', color: 'var(--muted)' }}>
-            Diseño hecho con <span style={{ color: 'var(--red)' }}>♥</span> y proceso humano
+            Diseño hecho con <span style={{ color: 'var(--red)' }}>♥</span> y más humano
           </div>
         </div>
       </div>

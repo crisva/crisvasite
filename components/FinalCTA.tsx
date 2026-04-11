@@ -11,12 +11,12 @@ export default function FinalCTA() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
-    
+
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('https://formspree.io/c@crisva.com', { 
+      const response = await fetch('https://formspree.io/f/mgopqobp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -75,15 +75,20 @@ export default function FinalCTA() {
                   <label htmlFor="nombre" style={{ fontSize: '.82rem', fontWeight: 600, color: 'var(--muted)' }}>Nombre</label>
                   <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
                 </div>
-                
+
                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '.4rem', marginBottom: '1rem' }}>
-                  <label htmlFor="empresa" style={{ fontSize: '.82rem', fontWeight: 600, color: 'var(--muted)' }}>Empresa</label>
+                  <label htmlFor="empresa" style={{ fontSize: '.82rem', fontWeight: 600, color: 'var(--muted)' }}>Empresa / Proyecto</label>
                   <input type="text" id="empresa" name="empresa" placeholder="Tu empresa o proyecto" required />
                 </div>
 
                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '.4rem', marginBottom: '1rem' }}>
-                  <label htmlFor="email" style={{ fontSize: '.82rem', fontWeight: 600, color: 'var(--muted)' }}>Email de trabajo</label>
+                  <label htmlFor="email" style={{ fontSize: '.82rem', fontWeight: 600, color: 'var(--muted)' }}>Email</label>
                   <input type="email" id="email" name="email" placeholder="tu@empresa.com" required />
+                </div>
+
+                <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '.4rem', marginBottom: '1rem' }}>
+                  <label htmlFor="number" style={{ fontSize: '.82rem', fontWeight: 600, color: 'var(--muted)' }}>Whatsapp</label>
+                  <input type="number" id="number" name="number" placeholder="+51 999000999" required />
                 </div>
 
                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '.4rem', marginBottom: '1rem' }}>
@@ -106,9 +111,9 @@ export default function FinalCTA() {
                 <button type="submit" className="btn btn-primary form-submit" disabled={status === 'loading'} style={{ width: '100%', padding: '1rem', fontSize: '1rem', fontWeight: 700, letterSpacing: '.02em', marginTop: '.5rem', justifyContent: 'center' }}>
                   {status === 'loading' ? 'Enviando...' : 'Conversemos'}
                 </button>
-                
+
                 {status === 'error' && <p style={{ color: 'var(--red)', fontSize: '.85rem', marginTop: '1rem', textAlign: 'center' }}>Hubo un error. Por favor intenta de nuevo.</p>}
-                
+
                 <p className="form-note" style={{ textAlign: 'center', fontSize: '.78rem', color: 'var(--muted)', marginTop: '.75rem' }}>
                   🔒 Sin spam. Sin pitch agresivo. Respondemos en menos de 24h.
                 </p>

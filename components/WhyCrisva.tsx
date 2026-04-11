@@ -190,7 +190,7 @@ export default function WhyCrisva() {
           style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto 5rem' }}
         >
           <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
-            No somos un estudio. Tampoco una consultora.
+            Hay estudios que entregan. Consultoras que recomiendan. Nosotros hacemos las dos cosas.
           </span>
           <TypingHeading
             text={"¿Por qué\nCrisva?"}
@@ -204,8 +204,7 @@ export default function WhyCrisva() {
             }}
           />
           <p className="body-lg" style={{ color: 'var(--muted)', fontSize: '1.1rem', lineHeight: 1.6, maxWidth: '700px', margin: '0 auto' }}>
-            Somos el equipo que tus clientes recuerdan como socios estratégicos. <br className="hide-mobile" />
-            Esto es lo que nos hace diferentes del resto.
+            No somos un proveedor más en tu lista. Somos el equipo que entra al problema contigo,  ejecuta con criterio y responde por los resultados.
           </p>
         </motion.div>
 
@@ -222,45 +221,45 @@ export default function WhyCrisva() {
           <CompareCard
             index={0}
             title="Estudio de diseño"
-            subtitle="Ejecutan solo lo que se les pide."
+            subtitle="Ejecutan lo que se les pide. Nada más."
             isNegative
             image="/images/Servicios/ Estudio de diseño.png"
             items={[
-              "Branding, UX y UI como silos separados.",
-              "Entregan y se desvinculan del proyecto pronto.",
-              "Diseñan sin investigar a los usuarios reales.",
-              "Sin verdadera responsabilidad sobre el éxito.",
-              "KPI enfocado en archivos entregados."
+              "Diseño sin estrategia: entregan lo que pides, no lo que necesitas.",
+              "Se desconectan al cerrar el proyecto. Sin seguimiento real.",
+              "Priorizan la estética sobre el impacto en el usuario.",
+              "Miden éxito en archivos entregados, no en resultados de negocio.",
+              "Silos entre branding, UX y UI que generan inconsistencia."
             ]}
           />
 
           <CompareCard
             index={1}
             title="Consultora digital"
-            subtitle="Estrategia sin capacidad de ejecución."
+            subtitle="Estrategia brillante. Ejecución, ninguna."
             isNegative
             image="/images/Servicios/Consultora digital.png"
             items={[
-              "Cobran por hora sin garantía de entregable.",
-              "Subcontratan el diseño a terceros externos.",
-              "Consultores generalistas, no especialistas UX.",
-              "Decks y recomendaciones, no productos reales.",
-              "Sin identidad profunda ni voz de marca propia."
+              "Cobran por hora sin garantía de entregable real.",
+              "Subcontratan el diseño: pierdes control y coherencia.",
+              "Generalistas que cobran como especialistas senior.",
+              "Decks detallados que nadie sabe cómo implementar.",
+              "Sin piel en el juego: si no funciona, no es su problema."
             ]}
           />
 
           <CompareCard
             index={2}
             title="Socio estratégico"
-            subtitle="Co-creamos desde el primer momento."
+            subtitle="Estrategia + ejecución + responsabilidad."
             isFeatured
             image="/images/Servicios/Socio estratégico.png"
             items={[
-              "Proceso end-to-end: Branding, UX y UI coherente.",
-              "Acompañamos el proyecto hasta que ve la luz.",
-              "UX Research integrado como pilar fundamental.",
-              "Co-creación humana: eres parte del proceso.",
-              "KPI enfocado en el impacto medible del negocio."
+              "Proceso end-to-end: estrategia, branding, UX y UI en un solo equipo.",
+              "Acompañamos desde el diagnóstico hasta que el producto ve la luz.",
+              "UX Research integrado como base de cada decisión de diseño.",
+              "Co-creación real: tú defines el rumbo, nosotros lo hacemos posible.",
+              "Medimos éxito en impacto de negocio, no en entregables."
             ]}
           />
         </motion.div>

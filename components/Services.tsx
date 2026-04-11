@@ -5,33 +5,33 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const BoxIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
-    <path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>
+    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+    <path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" />
   </svg>
 );
 
 const PaletteIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
-    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.5-1.1s-.5-.8-.5-1.2c0-.9.7-1.6 1.6-1.6H17c2.8 0 5-2.2 5-5 0-5.5-4.5-10-10-10Z"/>
+    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.5-1.1s-.5-.8-.5-1.2c0-.9.7-1.6 1.6-1.6H17c2.8 0 5-2.2 5-5 0-5.5-4.5-10-10-10Z" />
   </svg>
 );
 
 const CompassIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+    <circle cx="12" cy="12" r="10" /><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
   </svg>
 );
 
 const BarChartIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/>
+    <line x1="12" x2="12" y1="20" y2="10" /><line x1="18" x2="18" y1="20" y2="4" /><line x1="6" x2="6" y1="20" y2="16" />
   </svg>
 );
 
 const CodeIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+    <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
   </svg>
 );
 
@@ -42,7 +42,7 @@ const SERVICES = [
     label: "Diseño de\nProducto",
     title: "Product\nDesign",
     image: "/images/services/product-design.png",
-    desc: "UX, UI e investigación integrados para crear productos que las personas usan y que los negocios escalan.",
+    desc: "Diseñamos productos que las personas entienden y los negocios pueden escalar. UX, UI e investigación integrados desde el día uno — no como entregas separadas.",
     includes: [
       "UX Research y User Flows",
       "Wireframes y Prototipado",
@@ -56,7 +56,7 @@ const SERVICES = [
     label: "Identidad\nVisual",
     title: "Branding",
     image: "/images/services/branding.png",
-    desc: "Identidades que van más allá del logo. Marcas que posicionan, conectan y convierten en cada touchpoint.",
+    desc: "Una identidad que va más allá del logo. Construimos marcas que posicionan, generan confianza y convierten en cada punto de contacto con el usuario.",
     includes: [
       "Estrategia de Marca",
       "Logotipo y Tipografía",
@@ -70,7 +70,7 @@ const SERVICES = [
     label: "Visión\nEstratégica",
     title: "Strategy\nDesign",
     image: "/images/services/strategy.png",
-    desc: "Claridad antes de ejecutar. Estrategia de diseño alineada al negocio, optimizando cada decisión táctica.",
+    desc: "Primero la claridad, luego la ejecución. Alineamos tu estrategia de producto con los objetivos reales del negocio para que cada decisión táctica tenga sentido.",
     includes: [
       "Diagnóstico de Producto",
       "Mapa de Oportunidades",
@@ -84,7 +84,7 @@ const SERVICES = [
     label: "Optimización",
     title: "Design\nGrowth",
     image: "/images/services/growth.png",
-    desc: "Diseño orientado a resultados: más conversión, más retención e impacto medible en los números.",
+    desc: "Diseño con foco en resultados: más conversión, más retención, impacto medible. No iteramos por intuición — lo hacemos con datos y criterio estratégico.",
     includes: [
       "Auditoría UX con Datos",
       "A/B Testing de Interfaces",
@@ -98,7 +98,7 @@ const SERVICES = [
     label: "Producto\nVivo",
     title: "Desarrollo\nWeb",
     image: "/images/services/development.png",
-    desc: "Del diseño al código real. Implementamos interfaces pixel-perfect sin pérdida de calidad técnica.",
+    desc: "Del diseño al código sin pérdida de calidad. Implementamos interfaces pixel-perfect que cargan rápido, se ven bien en todos los dispositivos y convierten mejor.",
     includes: [
       "Front-end Pixel-Perfect",
       "Landing Pages de Impacto",
@@ -130,7 +130,7 @@ export default function Services() {
       <div className="container" style={{ maxWidth: '1600px' }}>
         <header style={{ marginBottom: '6rem', textAlign: 'center' }}>
           <span className="label text-gradient" style={{ display: 'block', marginBottom: '1.5rem' }}>
-            Modelos de ejecución a medida.
+            Cada servicio, diseñado para impactar tu negocio.
           </span>
           <h2 className="display" style={{ margin: 0, textTransform: 'uppercase' }}>Nuestros Servicios</h2>
         </header>
@@ -142,7 +142,7 @@ export default function Services() {
           width: '100%',
         }}>
           {SERVICES.map((service, idx) => (
-            <ServiceCard 
+            <ServiceCard
               key={idx}
               service={service}
               isActive={activeIndex === idx}
@@ -152,7 +152,7 @@ export default function Services() {
         </div>
 
         <p style={{ color: 'var(--muted)', fontSize: '15px', textAlign: 'center', marginTop: '4rem' }}>
-          ¿Necesitas varias disciplinas? Consulta por nuestro <em>Retainer Mensual</em> con equipo senior a demanda.
+          ¿Necesitas varias disciplinas a la vez? Consulta por nuestro <em>Retainer Mensual</em> — equipo senior dedicado, sin fricción de coordinación.
         </p>
       </div>
 
@@ -205,8 +205,8 @@ function ServiceCard({ service, isActive, onClick }: any) {
       id={service.id}
       onClick={onClick}
       layout
-      whileHover={!isActive ? { 
-        scale: 1.02, 
+      whileHover={!isActive ? {
+        scale: 1.02,
         borderColor: 'rgba(253, 118, 0, 0.4)',
         boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
       } : {}}
@@ -243,9 +243,9 @@ function ServiceCard({ service, isActive, onClick }: any) {
               zIndex: 0,
             }}
           >
-            <img 
-              src={service.image} 
-              alt={service.title} 
+            <img
+              src={service.image}
+              alt={service.title}
               style={{
                 width: '100%',
                 height: '100%',
@@ -280,7 +280,7 @@ function ServiceCard({ service, isActive, onClick }: any) {
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
         {/* Collapsed/Header View */}
-        <div 
+        <div
           className="service-card-header"
           style={{
             display: 'flex',
@@ -308,17 +308,17 @@ function ServiceCard({ service, isActive, onClick }: any) {
           )}
 
           <div className="service-card-title-wrapper">
-            <span className="label" style={{ 
-              fontSize: isActive ? '12px' : '14px', 
-              color: isActive ? 'rgba(255,255,255,0.6)' : 'var(--muted)', 
+            <span className="label" style={{
+              fontSize: isActive ? '12px' : '14px',
+              color: isActive ? 'rgba(255,255,255,0.6)' : 'var(--muted)',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               whiteSpace: 'pre-line'
             }}>
               {service.label}
             </span>
-            <h3 className="h2" style={{ 
-              margin: 0, 
+            <h3 className="h2" style={{
+              margin: 0,
               whiteSpace: 'pre-line',
               fontSize: isActive ? '2.8rem' : '2rem',
               fontWeight: 600,
@@ -338,9 +338,9 @@ function ServiceCard({ service, isActive, onClick }: any) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
                 gap: '3rem',
                 height: '100%',
                 justifyContent: 'flex-start'

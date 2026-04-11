@@ -4,6 +4,11 @@ import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '@/lib/animations';
 
 const LOGOS = [
+  '/images/Brands/image 1.png',
+  '/images/Brands/image 2.png',
+  '/images/Brands/image 3.png',
+  '/images/Brands/image 4.png',
+  '/images/Brands/image 5.png',
   '/images/Brands/image 6.png',
   '/images/Brands/image 7.png',
   '/images/Brands/image 8.png',
@@ -46,7 +51,7 @@ export default function LogosBar() {
         >
           Empresas que eligieron trascender a través del diseño
         </motion.p>
-        
+
         <div style={{
           overflow: 'hidden',
           width: '100vw',
@@ -58,10 +63,10 @@ export default function LogosBar() {
         }}>
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-              duration: 40, 
-              repeat: Infinity, 
-              ease: "linear" 
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear"
             }}
             style={{
               display: 'flex',
@@ -81,15 +86,15 @@ export default function LogosBar() {
                   flexShrink: 0
                 }}
               >
-                <img 
-                  src={src} 
-                  alt="Brand logo" 
-                  style={{ 
-                    height: '96px', 
-                    width: 'auto', 
+                <img
+                  src={src}
+                  alt="Brand logo"
+                  style={{
+                    height: '96px',
+                    width: 'auto',
                     display: 'block',
-                    filter: 'brightness(1.5)' 
-                  }} 
+                    filter: 'brightness(1.5)'
+                  }}
                 />
               </div>
             ))}

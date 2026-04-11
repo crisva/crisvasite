@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { casesData } from '@/lib/casesData';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
 
 export async function generateStaticParams() {
   return casesData.map((c) => ({
@@ -18,13 +20,15 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
   return (
     <div className="case-study-page">
+      <Nav />
+
       {/* 1. Executive Snapshot */}
       <section className="section bg-gradient-dark" style={{ paddingTop: '10rem', paddingBottom: '4rem', background: 'var(--bg3)' }}>
         <div className="container">
           <Link href="/" className="btn-ghost btn" style={{ marginBottom: '2rem', display: 'inline-flex', alignItems: 'center' }}>
             &larr; Volver al inicio
           </Link>
-          
+
           <div style={{ marginBottom: '4rem' }}>
             <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1rem' }}>{caseData.industry}</span>
             <h1 className="display" style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>{caseData.title}</h1>
@@ -37,8 +41,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)' }}>
               {caseData.heroImage.alt}
             </div>
-            {/* If actual images existed, we would use: */}
-            {/* <Image src={caseData.heroImage.src} alt={caseData.heroImage.alt} fill style={{ objectFit: 'cover' }} priority /> */}
           </div>
 
           <div className="card" style={{ padding: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
@@ -160,7 +162,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
             <div className="card" style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-               <span style={{ color: 'var(--muted)' }}>[Strategic Diagram Placeholder: {caseData.approachImage.alt}]</span>
+              <span style={{ color: 'var(--muted)' }}>[Strategic Diagram Placeholder: {caseData.approachImage.alt}]</span>
             </div>
             <div>
               <h2 className="h2" style={{ marginBottom: '2rem' }}>Estrategia y Principios</h2>
@@ -192,7 +194,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem', fontSize: '1.1rem' }}>
             {caseData.solutionEvolution}
           </p>
-          
+
           <div style={{ width: '100%', height: '600px', background: 'var(--surface)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '4rem' }}>
             <span style={{ color: 'var(--muted)' }}>[High-Fidelity UI Presentation Placeholder: {caseData.keyScreensImage.alt}]</span>
           </div>
@@ -217,7 +219,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <p style={{ fontSize: '1.1rem' }}>{caseData.usabilityTestingDesc}</p>
           </div>
           <div className="card" style={{ height: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-             <span style={{ color: 'var(--muted)' }}>[Usability Heatmap Placeholder: {caseData.testingImage.alt}]</span>
+            <span style={{ color: 'var(--muted)' }}>[Usability Heatmap Placeholder: {caseData.testingImage.alt}]</span>
           </div>
         </div>
       </section>
@@ -244,7 +246,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </div>
       </section>
-      
+
       {/* Pre-footer Call to Action */}
       <section className="section" style={{ background: 'var(--red-gradient)', textAlign: 'center' }}>
         <div className="container">
@@ -253,6 +255,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <a href="/#contacto" className="btn btn-ghost" style={{ border: '2px solid white', padding: '1rem 3rem', borderRadius: '30px', fontSize: '1.1rem', fontWeight: 600 }}>Agendar Sesión</a>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
