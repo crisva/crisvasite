@@ -48,6 +48,7 @@ body {
   font-size: 15px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a {
@@ -197,7 +198,26 @@ em {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
   .section>.container>div:not(.team-grid):not(.pain-grid) {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* Nav hamburger */
+.nav-hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+
+  .nav-hamburger {
+    display: flex !important;
   }
 }
