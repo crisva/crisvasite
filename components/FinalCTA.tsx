@@ -121,9 +121,11 @@ export default function FinalCTA() {
             )}
           </div>
 
-          <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '.5rem', fontSize: '.88rem', color: 'var(--muted)' }}>
-            <div className="avail-dot" style={{ width: '8px', height: '8px', background: '#2eb450', borderRadius: '50%' }} />
-            <span>Disponibles para nuevos proyectos · Lima, Perú · Remoto LATAM · c@crisva.com</span>
+          <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '.88rem', color: 'var(--muted)', textAlign: 'center' }}>
+            <span>
+              <span style={{ display: 'inline-block', width: '8px', height: '8px', background: '#2eb450', borderRadius: '50%', marginRight: '.5rem', verticalAlign: 'middle', position: 'relative', top: '-1px' }} />
+              Disponibles para nuevos proyectos · Lima, Perú · Remoto LATAM · c@crisva.com
+            </span>
           </div>
         </motion.div>
       </div>

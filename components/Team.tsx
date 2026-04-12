@@ -2,40 +2,94 @@
 
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, EASE } from '@/lib/animations';
-
 import TypingHeading from './TypingHeading';
 
 const TEAM = [
-  { initials: "CV", name: "Cristhian Valle", role: "Founder & Principal Designer", dept: "CEO · Product Designer · Entrepreneur", image: "/images/Team/Cristhian Valle CEO & Founder Principal Product Designer.png" },
-  { initials: "SQ", name: "Sebastian Quintanilla", role: "UX Expert", dept: "Experience Design", image: "/images/Team/Sebastian Quintanilla UX Expert.png" },
-  { initials: "MC", name: "Miguel Corahua", role: "Product Designer Expert", dept: "Product Design", image: "/images/Team/Miguel Corahua Product Designer Expert.png" },
-  { initials: "CF", name: "Christian Fujiki", role: "Brand Expert", dept: "Branding & Strategy", image: "/images/Team/Christian Fujiki Brand Expert.png" },
-  { initials: "BD", name: "Belén Diaz", role: "Research Expert", dept: "User Research", image: "/images/Team/Belén Diaz Research Expert.png" },
-  { initials: "TP", name: "Tata Portal", role: "Art Experience Designer", dept: "Art Direction", image: "/images/Team/Tata Portal Art Experience Designer.png" },
-  { initials: "GV", name: "Geomar Ventura", role: "UI Expert", dept: "Interface Design", image: "/images/Team/Geomar Ventura UI Expert.png" },
-  { initials: "BC", name: "Brenda Campos", role: "Design Strategist", dept: "Design Strategy", image: "/images/Team/Brenda Campos Design Strategist.png" },
-  { initials: "LP", name: "The crack", role: "Growth Expert", dept: "Growth & Product", image: "" },
-  { initials: "DC", name: "Diana Coronado", role: "UX & UI Designer", dept: "Product Design", image: "/images/Team/Diana Coronado UX & UI Designer.png" },
-  { initials: "JM", name: "Jamil Mori", role: "UX Designer", dept: "Interaction Design", image: "/images/Team/Jamil Mori UX Designer.png" },
-  { initials: "IV", name: "Israel Valencia", role: "Design Entry", dept: "Design Operations", image: "/images/Team/Israel Valencia Design Entry.png" }
+  { name: "Cristhian Valle", role: "Founder & Principal Designer", image: "/images/Team/Cristhian Valle CEO & Founder Principal Product Designer.png" },
+  { name: "Sebastian Quintanilla", role: "UX Expert", image: "/images/Team/Sebastian Quintanilla UX Expert.png" },
+  { name: "Miguel Corahua", role: "Product Designer Expert", image: "/images/Team/Miguel Corahua Product Designer Expert.png" },
+  { name: "Christian Fujiki", role: "Brand Expert", image: "/images/Team/Christian Fujiki Brand Expert.png" },
+  { name: "Belén Diaz", role: "Research Expert", image: "/images/Team/Belén Diaz Research Expert.png" },
+  { name: "Tata Portal", role: "Art Experience Designer", image: "/images/Team/Tata Portal Art Experience Designer.png" },
+  { name: "Geomar Ventura", role: "UI Expert", image: "/images/Team/Geomar Ventura UI Expert.png" },
+  { name: "Brenda Campos", role: "Design Strategist", image: "/images/Team/Brenda Campos Design Strategist.png" },
+  { name: "The crack", role: "Growth Expert", image: "" },
+  { name: "Diana Coronado", role: "UX & UI Designer", image: "/images/Team/Diana Coronado UX & UI Designer.png" },
+  { name: "Jamil Mori", role: "UX Designer", image: "/images/Team/Jamil Mori UX Designer.png" },
+  { name: "Israel Valencia", role: "Design Entry", image: "/images/Team/Israel Valencia Design Entry.png" }
 ];
 
 const cardAnimation = {
-  hidden: { opacity: 0, y: 40, scale: 0.98 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: { duration: 0.8, ease: EASE }
-  }
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } }
 };
 
 export default function Team() {
   return (
     <section id="equipo" className="section">
+      <style>{`
+        .team-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
+        }
+        .team-card {
+          background: var(--surf1);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          overflow: hidden;
+        }
+        .team-img-wrap {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          background: var(--surf2);
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .team-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .team-placeholder {
+          font-size: 3rem;
+          color: var(--red);
+          font-weight: 800;
+          opacity: 0.8;
+        }
+        .team-info {
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+        .team-name {
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: var(--white);
+          line-height: 1.3;
+        }
+        .team-role {
+          font-size: 0.75rem;
+          color: var(--red);
+          font-weight: 600;
+        }
+        @media (max-width: 1024px) {
+          .team-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+          .team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem; }
+          .team-info { padding: 0.6rem; }
+          .team-name { font-size: 0.75rem; }
+          .team-role { font-size: 0.65rem; }
+        }
+      `}</style>
+
       <div className="container" style={{ maxWidth: '1400px' }}>
         <motion.div
-          className="team-header"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -45,11 +99,11 @@ export default function Team() {
           <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
             Las personas que los hacen posible
           </span>
-          <TypingHeading 
-            text="El equipo" 
+          <TypingHeading
+            text="El equipo"
             className="display"
-            style={{ 
-              margin: '0 auto 1.5rem', 
+            style={{
+              margin: '0 auto 1.5rem',
               fontSize: 'clamp(3rem, 8vw, 5rem)',
               textTransform: 'uppercase',
               letterSpacing: '-0.02em',
@@ -61,87 +115,30 @@ export default function Team() {
           </p>
         </motion.div>
 
-        {/* Team Grid */}
         <motion.div
-           className="team-grid"
-           variants={staggerContainer}
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true, amount: 0.05 }}
-           style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}
-         >
-           {TEAM.map((m, i) => (
-            <motion.div
-              key={i}
-              variants={cardAnimation}
-              className="team-member"
-              style={{
-                flex: '0 1 calc(25% - 1rem)',
-                minWidth: '220px',
-                background: 'var(--surf1)',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius)',
-                padding: '1rem',
-                textAlign: 'center',
-                transition: 'border-color .25s, transform .2s',
-              }}
-            >
-              <div className="member-image" style={{
-                width: '100%',
-                aspectRatio: '1',
-                borderRadius: '12px',
-                background: 'var(--surf2)',
-                overflow: 'hidden',
-                marginBottom: '1rem',
-                border: '1px solid var(--border)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
+          className="team-grid"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+        >
+          {TEAM.map((m, i) => (
+            <motion.div key={i} variants={cardAnimation} className="team-card">
+              <div className="team-img-wrap">
                 {m.image ? (
-                  <img 
-                    src={m.image} 
-                    alt={m.name} 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
+                  <img src={m.image} alt={m.name} className="team-img" />
                 ) : (
-                  <span style={{ 
-                    fontSize: '4rem', 
-                    color: 'var(--red)', 
-                    fontFamily: 'var(--font-display)',
-                    fontWeight: '800',
-                    opacity: 0.8,
-                    textShadow: '0 0 20px rgba(253, 118, 0, 0.3)'
-                  }}>?</span>
+                  <span className="team-placeholder">?</span>
                 )}
               </div>
-              <div className="member-name" style={{ fontSize: '.95rem', fontWeight: 700, marginBottom: '.2rem' }}>{m.name}</div>
-              <div className="member-role" style={{ fontSize: '.8rem', color: 'var(--red)', fontWeight: 600 }}>{m.role}</div>
+              <div className="team-info">
+                <span className="team-name">{m.name}</span>
+                <span className="team-role">{m.role}</span>
+              </div>
             </motion.div>
-           ))}
+          ))}
         </motion.div>
       </div>
-
-      <style jsx>{`
-        .team-member {
-          flex: 0 1 calc(25% - 1rem);
-        }
-        @media (max-width: 1000px) {
-          .team-member { flex: 0 1 calc(33.33% - 1rem) !important; }
-        }
-        @media (max-width: 800px) {
-          .team-member { flex: 0 1 calc(50% - 1rem) !important; }
-        }
-        @media (max-width: 900px) {
-          .team-founder { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 500px) {
-          .team-member { flex: 1 1 100% !important; }
-        }
-        :global(.team-member:hover) {
-          border-color: var(--border2) !important;
-        }
-      `}</style>
     </section>
   );
 }

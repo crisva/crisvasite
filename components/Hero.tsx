@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import VideoBackground from './VideoBackground';
 
-const WORDS = ["Product Design", "Growth", "Branding"];
+const WORDS = ["Product Design", "Growth", "Branding", "Design Strategy", "Desarrollo"];
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -62,7 +62,7 @@ export default function Hero() {
           }}
         >
           Trasciende hasta <em>10x</em> a través del{' '}
-          <div style={{ display: 'inline-flex', verticalAlign: 'top', height: '1.2em', overflow: 'hidden' }}>
+          <div style={{ display: 'inline-flex', verticalAlign: 'bottom' }}>
             <AnimatePresence mode="wait">
               <motion.em
                 key={WORDS[index]}
