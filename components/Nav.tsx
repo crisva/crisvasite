@@ -27,7 +27,7 @@ export default function Nav() {
             gap: '2rem',
           }}
         >
-          <motion.a href="#" className="nav-logo" variants={fadeUp} style={{
+          <motion.a href="/" className="nav-logo" variants={fadeUp} style={{
             display: 'flex',
             alignItems: 'center',
           }}>
@@ -46,7 +46,7 @@ export default function Nav() {
           }}>
             <li>
               <motion.a
-                href="#proceso"
+                href="/#proceso"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="nav-link-hover"
@@ -57,7 +57,7 @@ export default function Nav() {
             </li>
             <li>
               <motion.a
-                href="#servicios"
+                href="/#servicios"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="nav-link-hover"
@@ -68,7 +68,7 @@ export default function Nav() {
             </li>
             <li>
               <motion.a
-                href="#casos"
+                href="/#casos"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="nav-link-hover"
@@ -79,7 +79,7 @@ export default function Nav() {
             </li>
             <li>
               <motion.a
-                href="#equipo"
+                href="/#equipo"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="nav-link-hover"

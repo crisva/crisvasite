@@ -6,7 +6,7 @@ const syne = Syne({
   subsets: ['latin'],
   weight: ['400', '600', '700', '800'],
   variable: '--font-syne',
-  display: 'block', // Obligatorio según requisitos
+  display: 'block',
 });
 
 const figtree = Figtree({
@@ -18,8 +18,12 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: 'Crisva Design Lab — End to End Product & Design',
+  title: 'Crisva Design Lab - End to End Product & Design',
   description: 'Agencia de Product Design y Branding en Lima, Perú. Diseñamos productos digitales que trascienden con un proceso humano y senior.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
   openGraph: {
     title: 'Crisva Design Lab',
     description: 'Diseñamos productos digitales que trascienden.',

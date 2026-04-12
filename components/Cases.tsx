@@ -8,11 +8,26 @@ import TypingHeading from './TypingHeading';
 
 const CASES = [
   {
+    label: "TECNIYA",
+    type: "Branding · Identidad",
+    sector: "PropTech · Marketplace de servicios del hogar",
+    title: "TecniYA — La marca que humaniza los servicios técnicos",
+    desc: "Sistema de identidad completo para una plataforma que conecta técnicos verificados con hogares en LATAM. Del concepto del logo al brand book, web concept e ilustraciones: una marca que genera confianza antes de que el técnico llegue a la puerta.",
+    thumb: "/images/cases/tecniya/tecniya-web.jpg",
+    metrics: [
+      { num: "6 sem", label: "De brief a brand book entregado" },
+      { num: "50 pág", label: "Brand book completo" },
+      { num: "4", label: "Aplicaciones digitales diseñadas" }
+    ],
+    slug: "tecniya"
+  },
+  {
     label: "FIRBID",
     type: "UX & UI",
     sector: "Fintech · Plataforma de subasta de dólares",
     title: "Firbid — De idea a producto listo para el mercado",
-    desc: "Crisva tomó la plataforma de Firbid desde el prototipado hasta la auditoría UX&UI completa, poniéndola lista para salir al mercado por primera vez. Proceso end-to-end que cubrió flujo de registro, onboarding, sistema de pujas y transacción final.",
+    desc: "Crisva tomó la plataforma de Firbid desde el prototipado hasta la auditoría UX & UI completa, poniéndola lista para salir al mercado por primera vez. Proceso end-to-end que cubrió flujo de registro, onboarding, sistema de pujas y transacción final.",
+    thumb: "",
     metrics: [
       { num: "0 → 1", label: "MVP listo para mercado" },
       { num: "100%", label: "Proceso end-to-end cubierto" },
@@ -25,7 +40,8 @@ const CASES = [
     type: "Branding",
     sector: "Startup B2B",
     title: "Dynamo — Branding que se convirtió en sociedad",
-    desc: "Construcción de identidad estratégica para una empresa con muchas ganas de destacar. El resultado no fue solo una marca — fue una alianza que Dynamo describe como su mejor decisión.",
+    desc: "Construcción de identidad estratégica para una empresa con muchas ganas de destacar. El resultado no fue solo una marca: fue una alianza que Dynamo describe como su mejor decisión.",
+    thumb: "",
     metrics: [
       { num: "Socio", label: "No proveedor, aliado" },
       { num: "Sistema", label: "Marca coherente en todos los touchpoints" }
@@ -38,6 +54,7 @@ const CASES = [
     sector: "Startup Digital",
     title: "Fluyez — Identidad que convierte",
     desc: "Branding completo para startup digital en crecimiento. Desde el research emocional hasta el sistema visual y el content kit listo para lanzamiento.",
+    thumb: "",
     metrics: [
       { num: "+35%", label: "Conversión primeros 3 meses" },
       { num: "Brand Kit", label: "Completo para lanzamiento" }
@@ -53,13 +70,10 @@ export default function Cases() {
 
   useEffect(() => {
     const handleResize = () => {
-      // Set to screen width minus padding on mobile, cap at 860 for desktop
       setCardWidth(window.innerWidth < 892 ? window.innerWidth - 32 : 860);
     };
 
-    // Set initial size
     handleResize();
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -161,23 +175,40 @@ export default function Cases() {
                       position: 'relative',
                       overflow: 'hidden',
                     }}>
-                      <div className="case-thumb-pattern" style={{
-                        position: 'absolute',
-                        inset: 0,
-                        opacity: .12,
-                        backgroundImage: 'repeating-linear-gradient(45deg, var(--red) 0, var(--red) 1px, transparent 0, transparent 50%)',
-                        backgroundSize: '12px 12px',
-                      }} />
-                      <div className="case-thumb-label" style={{
-                        position: 'relative',
-                        zIndex: 1,
-                        fontFamily: 'var(--font-h)',
-                        fontSize: '3.5rem',
-                        fontWeight: 800,
-                        color: 'rgba(255,255,255,.1)',
-                        letterSpacing: '-.02em',
-                        textTransform: 'uppercase'
-                      }}>{item.label}</div>
+                      {item.thumb ? (
+                        <img
+                          src={item.thumb}
+                          alt={item.title}
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            opacity: 0.85,
+                          }}
+                        />
+                      ) : (
+                        <>
+                          <div className="case-thumb-pattern" style={{
+                            position: 'absolute',
+                            inset: 0,
+                            opacity: .12,
+                            backgroundImage: 'repeating-linear-gradient(45deg, var(--red) 0, var(--red) 1px, transparent 0, transparent 50%)',
+                            backgroundSize: '12px 12px',
+                          }} />
+                          <div className="case-thumb-label" style={{
+                            position: 'relative',
+                            zIndex: 1,
+                            fontFamily: 'var(--font-h)',
+                            fontSize: '3.5rem',
+                            fontWeight: 800,
+                            color: 'rgba(255,255,255,.1)',
+                            letterSpacing: '-.02em',
+                            textTransform: 'uppercase'
+                          }}>{item.label}</div>
+                        </>
+                      )}
                     </div>
 
                     <div className="case-body" style={{ padding: 'clamp(1.5rem, 5vw, 3rem)' }}>
@@ -209,7 +240,6 @@ export default function Cases() {
             })}
           </motion.div>
 
-          {/* Controls - Fixed to the viewport container */}
           <div className="carousel-nav" style={{
             position: 'absolute',
             top: '50%',
@@ -267,7 +297,6 @@ export default function Cases() {
           </div>
         </div>
 
-        {/* Dots */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '.8rem', marginTop: '5rem' }}>
           {CASES.map((_, i) => (
             <button

@@ -11,6 +11,21 @@ export async function generateStaticParams() {
   }));
 }
 
+function CaseImage({ src, alt, height = 400 }: { src: string; alt: string; height?: number }) {
+  if (!src || src.startsWith('/placeholder')) {
+    return (
+      <div style={{ height, borderRadius: '12px', background: 'var(--bg2)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>{alt}</span>
+      </div>
+    );
+  }
+  return (
+    <div style={{ position: 'relative', width: '100%', height, borderRadius: '12px', overflow: 'hidden' }}>
+      <img src={src} alt={alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+    </div>
+  );
+}
+
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
   const caseData = casesData.find((c) => c.slug === params.slug);
 
@@ -37,13 +52,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             </p>
           </div>
 
-          <div style={{ position: 'relative', width: '100%', height: '500px', borderRadius: '12px', overflow: 'hidden', marginBottom: '4rem', background: 'var(--surface)' }}>
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)' }}>
-              {caseData.heroImage.alt}
-            </div>
-          </div>
+          <CaseImage src={caseData.heroImage.src} alt={caseData.heroImage.alt} height={500} />
 
-          <div className="card" style={{ padding: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
+          <div className="card" style={{ padding: '2rem', marginTop: '4rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
             <div>
               <span className="caption" style={{ color: 'var(--muted)', display: 'block', marginBottom: '0.5rem' }}>CLIENTE</span>
               <strong style={{ fontSize: '1.2rem', color: 'var(--white)' }}>{caseData.client}</strong>
@@ -71,11 +82,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <h2 className="h2" style={{ marginBottom: '2rem' }}>Contexto y Problema</h2>
             <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}><strong>Background:</strong> {caseData.contextBackground}</p>
             <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}><strong>Desafío:</strong> {caseData.contextChallenges}</p>
-            <p style={{ fontSize: '1.1rem' }}><strong>El "Burning Platform":</strong> {caseData.contextBurningPlatform}</p>
+            <p style={{ fontSize: '1.1rem' }}><strong>La urgencia:</strong> {caseData.contextBurningPlatform}</p>
           </div>
-          <div className="card" style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: 'var(--muted)' }}>[Context Placeholder: {caseData.contextImage.alt}]</span>
-          </div>
+          <CaseImage src={caseData.contextImage.src} alt={caseData.contextImage.alt} height={400} />
         </div>
       </section>
 
@@ -87,7 +96,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
               {caseData.objectives.map((obj, i) => (
                 <li key={i} style={{ marginBottom: '1rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                  <span style={{ position: 'absolute', left: 0, color: 'var(--red)' }}>—</span> {obj}
+                  <span style={{ position: 'absolute', left: 0, color: 'var(--red)' }}>→</span> {obj}
                 </li>
               ))}
             </ul>
@@ -96,7 +105,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <ul style={{ listStyle: 'none', padding: 0 }}>
                 {caseData.kpis.map((kpi, i) => (
                   <li key={i} style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--red)' }}></div> {kpi}
+                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--red)', flexShrink: 0 }}></div> {kpi}
                   </li>
                 ))}
               </ul>
@@ -127,7 +136,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       {/* 5. Discovery & Research & 6. Problem Definition */}
       <section className="section">
         <div className="container">
-          <div style={{ marginBottom: '4rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem' }}>
             <h2 className="h2" style={{ marginBottom: '1.5rem' }}>Descubrimiento y Síntesis</h2>
             <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>{caseData.researchHighlights}</p>
             <div style={{ padding: '2rem', background: 'var(--red-gradient)', borderRadius: '8px', color: 'var(--white)' }}>
@@ -136,7 +145,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
             <div className="card" style={{ padding: '2rem' }}>
               <h3 className="h3" style={{ marginBottom: '1.5rem' }}>Metodologías de Investigación</h3>
               <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -154,6 +163,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </ul>
             </div>
           </div>
+
+          <CaseImage src={caseData.researchImage.src} alt={caseData.researchImage.alt} height={400} />
         </div>
       </section>
 
@@ -161,9 +172,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       <section className="section" style={{ background: 'var(--bg2)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
-            <div className="card" style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ color: 'var(--muted)' }}>[Strategic Diagram Placeholder: {caseData.approachImage.alt}]</span>
-            </div>
+            <CaseImage src={caseData.approachImage.src} alt={caseData.approachImage.alt} height={400} />
             <div>
               <h2 className="h2" style={{ marginBottom: '2rem' }}>Estrategia y Principios</h2>
               <div style={{ marginBottom: '2rem' }}>
@@ -195,18 +204,14 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             {caseData.solutionEvolution}
           </p>
 
-          <div style={{ width: '100%', height: '600px', background: 'var(--surface)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '4rem' }}>
-            <span style={{ color: 'var(--muted)' }}>[High-Fidelity UI Presentation Placeholder: {caseData.keyScreensImage.alt}]</span>
-          </div>
+          <CaseImage src={caseData.keyScreensImage.src} alt={caseData.keyScreensImage.alt} height={600} />
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', marginTop: '4rem' }}>
             <div>
               <h3 className="h3" style={{ marginBottom: '1rem' }}>Interacciones Clave</h3>
               <p style={{ fontSize: '1.1rem' }}>{caseData.keyScreensDesc}</p>
             </div>
-            <div className="card" style={{ height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ color: 'var(--muted)' }}>[Video/Animation Placeholder: {caseData.interactionVideo.alt}]</span>
-            </div>
+            <CaseImage src={caseData.solutionImage.src} alt={caseData.solutionImage.alt} height={300} />
           </div>
         </div>
       </section>
@@ -218,9 +223,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <h2 className="h2" style={{ marginBottom: '1.5rem' }}>Validación e Iteración</h2>
             <p style={{ fontSize: '1.1rem' }}>{caseData.usabilityTestingDesc}</p>
           </div>
-          <div className="card" style={{ height: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: 'var(--muted)' }}>[Usability Heatmap Placeholder: {caseData.testingImage.alt}]</span>
-          </div>
+          <CaseImage src={caseData.testingImage.src} alt={caseData.testingImage.alt} height={350} />
         </div>
       </section>
 
@@ -244,6 +247,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </div>
             ))}
           </div>
+
+          <CaseImage src={caseData.impactImage.src} alt={caseData.impactImage.alt} height={400} />
         </div>
       </section>
 
@@ -251,7 +256,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       <section className="section" style={{ background: 'var(--red-gradient)', textAlign: 'center' }}>
         <div className="container">
           <h2 className="h2" style={{ marginBottom: '1.5rem' }}>¿Tienes un desafío similar?</h2>
-          <p style={{ marginBottom: '2rem', color: 'var(--white)', opacity: 0.9, fontSize: '1.2rem' }}>Hablemos de cómo podemos ayudar a tu equipo a romper techos de cristal.</p>
+          <p style={{ marginBottom: '2rem', color: 'var(--white)', opacity: 0.9, fontSize: '1.2rem' }}>Hablemos de cómo podemos ayudar a tu equipo a crecer con criterio.</p>
           <a href="/#contacto" className="btn btn-ghost" style={{ border: '2px solid white', padding: '1rem 3rem', borderRadius: '30px', fontSize: '1.1rem', fontWeight: 600 }}>Agendar Sesión</a>
         </div>
       </section>
