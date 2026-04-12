@@ -24,7 +24,7 @@ export default function TypingHeading({ text, className, style }: { text: string
 
   return (
     <motion.h2
-      className={className}
+      className={`${className || ''} typing-heading`}
       variants={container}
       initial="hidden"
       whileInView="visible"
@@ -33,10 +33,22 @@ export default function TypingHeading({ text, className, style }: { text: string
     >
       {characters.map((char, index) => (
         char === "\n" ? <br key={index} /> :
-        <motion.span key={index} variants={child}>
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
+          <motion.span key={index} variants={child}>
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
       ))}
+      <style>{`
+        @media (max-width: 768px) {
+          .typing-heading {
+            font-size: clamp(2rem, 9vw, 3rem) !important;
+            text-align: center !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+        }
+      `}</style>
     </motion.h2>
   );
 }
