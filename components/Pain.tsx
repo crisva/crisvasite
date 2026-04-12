@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeUp } from '@/lib/animations';
+import { fadeUp, staggerContainer } from '@/lib/animations';
 import TypingHeading from './TypingHeading';
 
 const SearchIcon = () => (
@@ -32,24 +32,33 @@ const PAIN_POINTS = [
   {
     icon: <SearchIcon />,
     title: "Silos",
-    desc: "Diseño por un lado, desarrollo por otro, estrategia por ninguno. El resultado: un producto fragmentado que nadie reconoce como coherente."
+    desc: "Diseño por un lado, desarrollo por otro, estrategia por ninguno. El resultado: un producto fragmentado que nadie reconoce como coherente.",
+    number: "01"
   },
   {
     icon: <ZapIcon />,
     title: "Velocidad",
-    desc: "Mientras coordinas tres proveedores distintos, tu competencia ya lanzó, iteró y creció. El mercado no espera a que todos se pongan de acuerdo."
+    desc: "Mientras coordinas tres proveedores distintos, tu competencia ya lanzó, iteró y creció. El mercado no espera a que todos se pongan de acuerdo.",
+    number: "02"
   },
   {
     icon: <ClockIcon />,
     title: "Ruido sin foco",
-    desc: "Muchas opiniones, pocas decisiones. Sin criterio estratégico claro, cada revisión aleja el producto de lo que realmente necesita el usuario."
+    desc: "Muchas opiniones, pocas decisiones. Sin criterio estratégico claro, cada revisión aleja el producto de lo que realmente necesita el usuario.",
+    number: "03"
   },
   {
     icon: <TargetIcon />,
     title: "Diseño sin impacto",
-    desc: "Bonito no es suficiente. Un producto que no convierte ni retiene es solo un gasto. El diseño tiene que mover métricas, no solo impresionar en presentaciones."
+    desc: "Bonito no es suficiente. Un producto que no convierte ni retiene es solo un gasto. El diseño tiene que mover métricas, no solo impresionar en presentaciones.",
+    number: "04"
   }
 ];
+
+const itemFade: any = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
 export default function Pain() {
   return (
@@ -61,12 +70,7 @@ export default function Pain() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             className="label"
-            style={{
-              color: 'var(--red)',
-              display: 'block',
-              marginBottom: '1rem',
-              textAlign: 'center'
-            }}
+            style={{ color: 'var(--red)', display: 'block', marginBottom: '1rem' }}
           >
             La mayoría invierte en diseño. Pocos invierten en el sistema que lo sostiene.
           </motion.span>
@@ -93,96 +97,98 @@ export default function Pain() {
               margin: '0 auto'
             }}
           >
-            Tu producto puede verse bien y aun así no convertir. <br />
-            Porque el diseño aislado no funciona. Lo que falla no es el logo ni la UI —<br className="hide-mobile" />
-            es la falta de coherencia entre estrategia, experiencia y tecnología.
+            Tu producto puede verse bien y aun así no convertir. Porque el diseño aislado no funciona.
+            Lo que falla no es el logo ni la UI: es la falta de coherencia entre estrategia, experiencia y tecnología.
           </motion.p>
         </header>
 
-        <div style={{
-          overflow: 'hidden',
-          width: '100vw',
-          position: 'relative',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
-          padding: '2rem 0'
-        }}>
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              duration: 35,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            style={{
-              display: 'flex',
-              gap: '2rem',
-              width: 'max-content',
-            }}
-          >
-            {[...PAIN_POINTS, ...PAIN_POINTS].map((item, idx) => (
-              <div
-                key={idx}
-                className="card"
-                style={{
-                  width: '400px',
-                  flexShrink: 0,
-                  padding: '3rem 2.5rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '2rem',
-                  cursor: 'default',
-                  borderRadius: '24px',
-                  background: 'var(--bg2)',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                <div style={{
-                  color: 'var(--red)',
-                  background: 'rgba(229, 48, 42, 0.08)',
-                  width: 'fit-content',
-                  padding: '0.9rem',
-                  borderRadius: '14px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  {item.icon}
-                </div>
+        <div className="pain-grid">
+          {PAIN_POINTS.map((item, idx) => (
+            <motion.div
+              key={idx}
+              variants={itemFade}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              style={{
+                background: 'var(--bg2)',
+                border: '1px solid var(--border)',
+                borderRadius: '24px',
+                padding: '3rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '2rem',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.5)',
+                cursor: 'default',
+              }}
+            >
+              <span style={{
+                position: 'absolute',
+                top: '1.5rem',
+                right: '2rem',
+                fontFamily: 'var(--font-display)',
+                fontSize: '5rem',
+                fontWeight: 800,
+                color: 'rgba(229, 48, 42, 0.06)',
+                lineHeight: 1,
+                pointerEvents: 'none',
+                userSelect: 'none',
+              }}>
+                {item.number}
+              </span>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <h3 style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.4rem',
-                    fontWeight: 600,
-                    color: 'var(--white)',
-                    margin: 0
-                  }}>
-                    {item.title}
-                  </h3>
-                  <p style={{
-                    color: 'var(--muted)',
-                    margin: 0,
-                    fontSize: '1rem',
-                    lineHeight: '1.6',
-                    fontWeight: 300
-                  }}>
-                    {item.desc}
-                  </p>
-                </div>
+              <div style={{
+                color: 'var(--red)',
+                background: 'rgba(229, 48, 42, 0.08)',
+                width: 'fit-content',
+                padding: '0.9rem',
+                borderRadius: '14px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                {item.icon}
               </div>
-            ))}
-          </motion.div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <h3 style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.5rem',
+                  fontWeight: 600,
+                  color: 'var(--white)',
+                  margin: 0,
+                }}>
+                  {item.title}
+                </h3>
+                <p style={{
+                  color: 'var(--muted)',
+                  margin: 0,
+                  fontSize: '1rem',
+                  lineHeight: 1.7,
+                  fontWeight: 300,
+                }}>
+                  {item.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
 
       <style jsx>{`
-        .card:hover {
-          border-color: rgba(240, 237, 232, 0.25);
-          transform: translateY(-4px);
-          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        .pain-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+          .pain-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+          .pain-grid { grid-template-columns: 1fr; }
         }
       `}</style>
     </section>
