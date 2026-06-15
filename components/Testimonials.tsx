@@ -41,7 +41,7 @@ const TESTIMONIALS = [
     text: "Excelente profesionales, me tocó trabajar con ellos un proyecto para remodelar toda una página y plataforma web de una Fintech en términos de UX/UI y quedó excelente. Rescato su forma de trabajo de manera individual para prototipar de forma inmediata y a la vez su trabajo en equipo también. Es una persona que se adapta a cualquier ambiente laboral y congenia rápidamente con su entorno.",
     author: "José Antonio Duarte",
     role: "CEO — Firbid",
-    avatar: "JD",
+    avatar: "JD"
   }
 ];
 
@@ -60,11 +60,11 @@ export default function Testimonials() {
           <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
             Lo que dicen quienes trascendieron
           </span>
-          <TypingHeading 
-            text="Testimonios" 
+          <TypingHeading
+            text="Testimonios"
             className="display"
-            style={{ 
-              margin: '0 auto 1.5rem', 
+            style={{
+              margin: '0 auto 1.5rem',
               fontSize: 'clamp(3rem, 8vw, 5rem)',
               textTransform: 'uppercase',
               letterSpacing: '-0.02em',
@@ -79,9 +79,9 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '1.5rem',
             maxWidth: '1200px',
             margin: '0 auto'
@@ -127,38 +127,20 @@ export default function Testimonials() {
               </div>
 
               <div className="test-author" style={{ display: 'flex', alignItems: 'center', gap: '.75rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border)' }}>
-                {'linkedin' in t && t.linkedin ? (
-                  <a href={t.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn de ${t.author}`} style={{ flexShrink: 0 }}>
-                    <div className="test-avatar" style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                      background: 'var(--red-dim)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontFamily: 'var(--font-h)',
-                      fontSize: '.85rem',
-                      fontWeight: 700,
-                      color: 'var(--red)',
-                    }}>{t.avatar}</div>
-                  </a>
-                ) : (
-                  <div className="test-avatar" style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    background: 'var(--red-dim)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontFamily: 'var(--font-h)',
-                    fontSize: '.85rem',
-                    fontWeight: 700,
-                    color: 'var(--red)',
-                    flexShrink: 0
-                  }}>{t.avatar}</div>
-                )}
+                <div className="test-avatar" style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: 'var(--red-dim)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: 'var(--font-h)',
+                  fontSize: '.85rem',
+                  fontWeight: 700,
+                  color: 'var(--red)',
+                  flexShrink: 0
+                }}>{t.avatar}</div>
                 <div className="test-info">
                   <strong style={{ fontSize: '.9rem', fontWeight: 600, display: 'block' }}>{t.author}</strong>
                   <span style={{ fontSize: '.78rem', color: 'var(--muted)', display: 'block' }}>{t.role}</span>
