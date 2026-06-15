@@ -13,10 +13,12 @@ const TEAM = [
   { name: "Tata Portal", role: "Art Experience Designer", image: "/images/Team/Tata Portal Art Experience Designer.png" },
   { name: "Geomar Ventura", role: "UI Expert", image: "/images/Team/Geomar Ventura UI Expert.png" },
   { name: "Brenda Campos", role: "Design Strategist", image: "/images/Team/Brenda Campos Design Strategist.png" },
+  { name: "Arte Cárdenas", role: "UX & Accessibility Designer", image: "/images/Team/Arte Cardenas UX and Accesibility Designer.png" },
+  { name: "David Jurin", role: "Product Designer Expert", image: "/images/Team/David Jurin Product Designer Expert.png" },
   { name: "The crack", role: "Growth Expert", image: "" },
   { name: "Diana Coronado", role: "UX & UI Designer", image: "/images/Team/Diana Coronado UX & UI Designer.png" },
   { name: "Jamil Mori", role: "UX Designer", image: "/images/Team/Jamil Mori UX Designer.png" },
-  { name: "Israel Valencia", role: "Design Entry", image: "/images/Team/Israel Valencia Design Entry.png" }
+  { name: "Israel Valencia", role: "Design Entry", image: "/images/Team/Israel Valencia Design Entry.png" },
 ];
 
 const cardAnimation = {
@@ -111,7 +113,7 @@ export default function Team() {
             }}
           />
           <p className="body-lg" style={{ color: 'var(--muted)', fontSize: '1.2rem', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto' }}>
-            11 especialistas senior. Cada uno con un rol definido dentro del pipeline de producto. Sin subcontratar, sin freelancers de relleno.
+            13 especialistas senior. Cada uno con un rol definido dentro del pipeline de producto. Sin subcontratar, sin freelancers de relleno.
           </p>
         </motion.div>
 

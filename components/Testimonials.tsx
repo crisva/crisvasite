@@ -13,10 +13,35 @@ const TESTIMONIALS = [
     avatar: "OL"
   },
   {
-    text: "Trabajar con Crisva ha sido una experiencia muy enriquecedora. Siempre nos daba alternativas para mejorar la propuesta. Si quieres diseñar la mejor experiencia son los indicados.",
-    author: "Ronald Barzola",
-    role: "CMO — Turismo Lab",
-    avatar: "RB"
+    text: "Crisva es un excelente profesional. Gracias a él, logramos rediseñar y lanzar con éxito la nueva plataforma web de turismolab.com, obteniendo un resultado estupendo que cumple plenamente con los objetivos estratégicos de nuestra empresa.",
+    author: "Erick Coronado Soncco",
+    role: "CEO — Turismo Lab",
+    avatar: "EC",
+    link: { label: "www.turismolab.com", url: "https://www.turismolab.com" }
+  },
+  {
+    text: "Es simplemente un privilegio trabajar con Cristhian y Crisva Design Lab. Ya van más de 6 meses que empezamos este camino de desarrollo de branding, website, diseño, y además del impresionante trabajo y perspectiva que tiene, su calidad de ser humano genuino y honesto es lo que más respeto. Definitivamente recomendado si realmente quieres alguien con visión y corazón.",
+    author: "Dr. Oscar Cornelio",
+    role: "Founder — droscarcornelio.com",
+    avatar: "OC"
+  },
+  {
+    text: "Excelente profesional. Muy dedicado, responsable y comprometido con los proyectos en los cuales participa. Lo recomiendo 100%.",
+    author: "David Lastra",
+    role: "CEO — Infocheck",
+    avatar: "DL"
+  },
+  {
+    text: "Crisva, es un profesional que tiene habilidades fuertes en el entendimiento de propósito de marca; además de acompañar en el proceso creativo para quedar conforme con los entregables pactados; además puedo valorar el manejo de expectativas de sus clientes. Crack Crisva.",
+    author: "Carlos Ordinola",
+    role: "CEO — TecniYA!",
+    avatar: "CO"
+  },
+  {
+    text: "Excelente profesionales, me tocó trabajar con ellos un proyecto para remodelar toda una página y plataforma web de una Fintech en términos de UX/UI y quedó excelente. Rescato su forma de trabajo de manera individual para prototipar de forma inmediata y a la vez su trabajo en equipo también. Es una persona que se adapta a cualquier ambiente laboral y congenia rápidamente con su entorno.",
+    author: "José Antonio Duarte",
+    role: "CEO — Firbid",
+    avatar: "JD",
   }
 ];
 
@@ -58,7 +83,7 @@ export default function Testimonials() {
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
             gap: '1.5rem',
-            maxWidth: '900px',
+            maxWidth: '1200px',
             margin: '0 auto'
           }}
         >
@@ -85,24 +110,55 @@ export default function Testimonials() {
                 <p className="test-text" style={{ fontSize: '.92rem', color: 'var(--muted)', lineHeight: 1.75, marginBottom: '1.5rem', fontStyle: 'italic', position: 'relative' }}>
                   <span style={{ fontFamily: 'var(--font-h)', fontSize: '2rem', color: 'var(--red)', opacity: .5, fontWeight: 800, verticalAlign: '-.5rem', marginRight: '.1rem' }}>"</span>
                   {t.text}
+                  {'link' in t && t.link && (
+                    <>
+                      {' '}
+                      <a
+                        href={t.link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'var(--red)', textDecoration: 'underline', fontStyle: 'normal' }}
+                      >
+                        {t.link.label}
+                      </a>
+                    </>
+                  )}
                 </p>
               </div>
 
               <div className="test-author" style={{ display: 'flex', alignItems: 'center', gap: '.75rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border)' }}>
-                <div className="test-avatar" style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'var(--red-dim)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'var(--font-h)',
-                  fontSize: '.85rem',
-                  fontWeight: 700,
-                  color: 'var(--red)',
-                  flexShrink: 0
-                }}>{t.avatar}</div>
+                {'linkedin' in t && t.linkedin ? (
+                  <a href={t.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn de ${t.author}`} style={{ flexShrink: 0 }}>
+                    <div className="test-avatar" style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      background: 'var(--red-dim)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontFamily: 'var(--font-h)',
+                      fontSize: '.85rem',
+                      fontWeight: 700,
+                      color: 'var(--red)',
+                    }}>{t.avatar}</div>
+                  </a>
+                ) : (
+                  <div className="test-avatar" style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    background: 'var(--red-dim)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: 'var(--font-h)',
+                    fontSize: '.85rem',
+                    fontWeight: 700,
+                    color: 'var(--red)',
+                    flexShrink: 0
+                  }}>{t.avatar}</div>
+                )}
                 <div className="test-info">
                   <strong style={{ fontSize: '.9rem', fontWeight: 600, display: 'block' }}>{t.author}</strong>
                   <span style={{ fontSize: '.78rem', color: 'var(--muted)', display: 'block' }}>{t.role}</span>

@@ -230,3 +230,17 @@ em {
     display: flex !important;
   }
 }
+
+/* Hero mobile */
+@media (max-width: 640px) {
+  #hero-cursor {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    white-space: normal !important;
+    font-size: clamp(3rem, 18vw, 5rem) !important;
+  }
+}

@@ -6,29 +6,29 @@ import { fadeUp, staggerContainer } from '@/lib/animations';
 import TypingHeading from './TypingHeading';
 
 const STEPS = [
-  {
+    {
     num: "01",
-    label: "DISEÑO DE\nPRODUCTO",
-    title: "Product\nDesign",
-    desc: "Convertimos tu idea en arquitectura real: flujos, prototipos y sistemas que los equipos pueden construir y los usuarios entienden desde el primer clic.",
-    tag: "3 a 5 semanas",
-    icon: "📦"
+    label: "VISIÓN\nESTRATÉGICA",
+    title: "Design\nStrategy",
+    desc: "Antes de diseñar una sola pantalla, entendemos tu negocio. Priorizamos lo que mueve la aguja, no lo que se ve bien en presentaciones.",
+    tag: "3 a más semanas",
+    icon: "🧭"
   },
-  {
+    {
     num: "02",
     label: "IDENTIDAD\nVISUAL",
     title: "Branding",
     desc: "Tu marca no es tu logo. Es la impresión que dejas antes, durante y después del producto. La construimos para que dure y para que convierta.",
-    tag: "2 a 4 semanas",
+    tag: "3 a 6 semanas",
     icon: "🎨"
   },
   {
     num: "03",
-    label: "VISIÓN\nESTRATÉGICA",
-    title: "Design\nStrategy",
-    desc: "Antes de diseñar una sola pantalla, entendemos tu negocio. Priorizamos lo que mueve la aguja, no lo que se ve bien en presentaciones.",
-    tag: "2 a 3 semanas",
-    icon: "🧭"
+    label: "DISEÑO DE\nPRODUCTO",
+    title: "Product\nDesign",
+    desc: "Convertimos tu idea en arquitectura real con impacto en el negocio: flujos, prototipos y sistemas que los equipos pueden construir y los usuarios entienden desde el primer clic.",
+    tag: "4 a más semanas",
+    icon: "📦"
   },
   {
     num: "04",
@@ -43,7 +43,7 @@ const STEPS = [
     label: "PRODUCTO\nVIVO",
     title: "Desarrollo\nVivo",
     desc: "El código es parte del diseño. Implementamos lo que diseñamos sin pérdida de calidad entre Figma y producción. Lo que ves es lo que se construye.",
-    tag: "5 a 8 semanas",
+    tag: "4 a más semanas",
     icon: "⚡"
   },
   {

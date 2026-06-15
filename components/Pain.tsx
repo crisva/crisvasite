@@ -49,7 +49,7 @@ const PAIN_POINTS = [
   },
   {
     icon: <TargetIcon />,
-    title: "Diseño sin impacto",
+    title: "Sin impacto",
     desc: "Bonito no es suficiente. Un producto que no convierte ni retiene es solo un gasto. El diseño tiene que mover métricas, no solo impresionar en presentaciones.",
     number: "04"
   }

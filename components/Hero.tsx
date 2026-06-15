@@ -8,6 +8,7 @@ const WORDS = ["Product Design", "Growth", "Branding", "Design Strategy", "Desar
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,10 +31,8 @@ export default function Hero() {
       color: '#fff',
       padding: '0 1.5rem',
     }}>
-      {/* Video Background Hero Replacement */}
-      <VideoBackground />
+      <VideoBackground isPlaying={isPlaying} />
 
-      {/* Dark Overlay for Contrast */}
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -42,7 +41,6 @@ export default function Hero() {
         pointerEvents: 'none',
       }} />
 
-      {/* Hero Content Overlay */}
       <div className="hero-content" style={{
         position: 'relative',
         zIndex: 10,
@@ -71,10 +69,7 @@ export default function Hero() {
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="text-gradient"
-                style={{
-                  display: 'inline-block',
-                  fontStyle: 'italic',
-                }}
+                style={{ display: 'inline-block', fontStyle: 'italic' }}
               >
                 {WORDS[index]}
               </motion.em>
@@ -87,10 +82,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="h1"
-          style={{
-            maxWidth: '32ch',
-            margin: '2rem auto 2.5rem',
-          }}
+          style={{ maxWidth: '32ch', margin: '2rem auto 2.5rem' }}
         >
           Creamos <em>soluciones de diseño</em> innovadoras que impulsan el <em>crecimiento</em> de tu startup.
         </motion.h2>
@@ -130,18 +122,46 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <style jsx>{`
-        .btn-hero-primary:hover {
-          transform: translateY(-4px) scale(1.02);
-          box-shadow: 0 15px 50px -10px rgba(253, 118, 0, 0.5);
-          filter: brightness(1.1);
-        }
-        @media (max-width: 640px) {
-          .hero-content { margin-top: 0; }
-          .display { font-size: 38px !important; }
-          .h1 { font-size: 22px !important; }
-        }
-      `}</style>
+      {/* Botón pause/play — accesibilidad WCAG 2.2.2 */}
+      <button
+        onClick={() => setIsPlaying((prev) => !prev)}
+        aria-label={isPlaying ? 'Pausar video de fondo' : 'Reproducir video de fondo'}
+        title={isPlaying ? 'Pausar video de fondo' : 'Reproducir video de fondo'}
+        style={{
+          position: 'absolute',
+          bottom: '2rem',
+          right: '2rem',
+          zIndex: 20,
+          width: '40px',
+          height: '40px',
+          borderRadius: '50%',
+          border: '1px solid rgba(255,255,255,0.25)',
+          backgroundColor: 'rgba(12,12,12,0.6)',
+          backdropFilter: 'blur(8px)',
+          color: '#fff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          transition: 'border-color 0.2s, background-color 0.2s',
+        }}
+        onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)')}
+        onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)')}
+      >
+        {isPlaying ? (
+          // Ícono pause
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <rect x="2" y="1" width="4" height="12" rx="1" fill="white" />
+            <rect x="8" y="1" width="4" height="12" rx="1" fill="white" />
+          </svg>
+        ) : (
+          // Ícono play
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M3 1.5L12 7L3 12.5V1.5Z" fill="white" />
+          </svg>
+        )}
+      </button>
+
     </section>
   );
 }
