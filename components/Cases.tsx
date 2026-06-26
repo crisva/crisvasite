@@ -8,45 +8,60 @@ import TypingHeading from './TypingHeading';
 
 const CASES = [
   {
+    label: "CEM",
+    type: "Product Design · Dev",
+    sector: "EdTech · Plataforma educativa en ciencias",
+    title: "CEM Capacita — La plataforma que conecta ciencias con oportunidades",
+    desc: "Los profesionales de ciencias en LATAM no tenían un lugar pensado para ellos. Diseñamos y desarrollamos cemcapacita.com de cero: desde la arquitectura de información hasta el código en producción.",
+    thumb: "/images/cases/cem-web/hero.jpg",
+    metrics: [
+      { num: "0 → 1", label: "De concepto a plataforma en producción" },
+      { num: "Full", label: "Design + Development end-to-end" },
+      { num: "Web", label: "Diseñada y desarrollada por Crisva" }
+    ],
+    slug: "cem-producto"
+  },
+  {
+    label: "CEM",
+    type: "Branding · Identidad",
+    sector: "EdTech · Ecosistema científico colaborativo",
+    title: "CEM — La marca que hace visible un ecosistema invisible",
+    desc: "Una red de profesionales de ciencias sin identidad visual no es una red: es un grupo. Diseñamos el sistema de marca que convirtió a CEM en una plataforma reconocible y confiable.",
+    thumb: "/images/cases/cem-brand/hero.jpg",
+    metrics: [
+      { num: "37 pág", label: "Brand book completo" },
+      { num: "Sistema", label: "Identidad coherente en todos los touchpoints" },
+      { num: "Teal", label: "Color que comunica ciencia con cercanía" }
+    ],
+    slug: "cem-branding"
+  },
+  {
     label: "TECNIYA",
     type: "Branding · Identidad",
     sector: "PropTech · Marketplace de servicios del hogar",
-    title: "TecniYA — La marca que humaniza los servicios técnicos",
-    desc: "Sistema de identidad completo para una plataforma que conecta técnicos verificados con hogares en LATAM. Del concepto del logo al brand book, web concept e ilustraciones: una marca que genera confianza antes de que el técnico llegue a la puerta.",
+    title: "TecniYA — La marca que genera confianza antes de que el técnico llegue",
+    desc: "Nadie confía en quien va a entrar a su casa. Diseñamos la identidad que resuelve eso antes del primer contacto.",
     thumb: "/images/cases/tecniya/tecniya-web.jpg",
     metrics: [
-      { num: "6 sem", label: "De brief a brand book entregado" },
-      { num: "50 pág", label: "Brand book completo" },
-      { num: "4", label: "Aplicaciones digitales diseñadas" }
+      { num: "6 sem", label: "De brief a lanzamiento sin iteraciones tardías" },
+      { num: "4", label: "Touchpoints con identidad coherente" },
+      { num: "50 pág", label: "Brand book que el equipo opera sin el estudio" }
     ],
     slug: "tecniya"
   },
   {
     label: "FIRBID",
-    type: "UX & UI",
-    sector: "Fintech · Plataforma de subasta de dólares",
-    title: "Firbid — De idea a producto listo para el mercado",
-    desc: "Crisva tomó la plataforma de Firbid desde el prototipado hasta la auditoría UX & UI completa, poniéndola lista para salir al mercado por primera vez. Proceso end-to-end que cubrió flujo de registro, onboarding, sistema de pujas y transacción final.",
-    thumb: "",
+    type: "UX & UI · End-to-End",
+    sector: "Fintech · Plataforma de tipo de cambio",
+    title: "Firbid — La primera subasta de dólares online del Perú",
+    desc: "Subastar dólares es un concepto nuevo. Diseñamos la experiencia completa para que usuarios y entidades financieras lo entendieran, confiaran y usaran.",
+    thumb: "/images/cases/firbid/firbid-screens-1.png",
     metrics: [
-      { num: "0 → 1", label: "MVP listo para mercado" },
-      { num: "100%", label: "Proceso end-to-end cubierto" },
-      { num: "8 sem", label: "De discovery a entrega final" }
+      { num: "0 → 1", label: "De concepto a plataforma lanzada" },
+      { num: "4+", label: "Entidades financieras operando" },
+      { num: "100%", label: "Flujo end-to-end diseñado" }
     ],
     slug: "firbid"
-  },
-  {
-    label: "DYNAMO",
-    type: "Branding",
-    sector: "Startup B2B",
-    title: "Dynamo — Branding que se convirtió en sociedad",
-    desc: "Construcción de identidad estratégica para una empresa con muchas ganas de destacar. El resultado no fue solo una marca: fue una alianza que Dynamo describe como su mejor decisión.",
-    thumb: "",
-    metrics: [
-      { num: "Socio", label: "No proveedor, aliado" },
-      { num: "Sistema", label: "Marca coherente en todos los touchpoints" }
-    ],
-    slug: "dynamo"
   },
   {
     label: "FLUYEZ",
