@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: "¿Solo trabajan con empresas peruanas?",
-    a: "No. Trabajamos en modo remoto con empresas de toda LATAM y también con organizaciones internacionales (como ABA-ROLI) y corporaciones globales (como HP). El proceso funciona igual de bien en remoto."
+    a: "No. Trabajamos en modo remoto con empresas de toda LATAM y también con organizaciones internacionales y corporaciones/startups globales. El proceso funciona igual de bien en remoto."
   },
   {
     q: "¿Entregan código o solo diseño?",
