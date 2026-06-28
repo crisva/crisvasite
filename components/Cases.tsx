@@ -64,17 +64,14 @@ const CASES = [
     slug: "firbid"
   },
   {
-    label: "FLUYEZ",
-    type: "Branding",
-    sector: "Startup Digital",
-    title: "Fluyez — Identidad que convierte",
-    desc: "Branding completo para startup digital en crecimiento. Desde el research emocional hasta el sistema visual y el content kit listo para lanzamiento.",
+    label: "PROXIMO",
+    type: "",
+    sector: "",
+    title: "Mas casos donde hemos trascendido",
+    desc: "Seguimos construyendo. Cada proyecto nuevo es una historia que pronto contaremos aqui.",
     thumb: "",
-    metrics: [
-      { num: "+35%", label: "Conversión primeros 3 meses" },
-      { num: "Brand Kit", label: "Completo para lanzamiento" }
-    ],
-    slug: "fluyez"
+    metrics: [],
+    slug: ""
   }
 ];
 
@@ -180,6 +177,7 @@ export default function Cases() {
                     position: 'relative',
                   }}
                 >
+                  {item.slug ? (
                   <Link href={`/casos/${item.slug}`} draggable={false} style={{ display: 'block', height: '100%', textDecoration: 'none', color: 'inherit' }}>
                     <div className="case-thumb" style={{
                       height: '220px',
@@ -250,6 +248,45 @@ export default function Cases() {
                       </div>
                     </div>
                   </Link>
+                  ) : (
+                  <div style={{ display: 'block', height: '100%', color: 'inherit' }}>
+                    <div style={{
+                      height: '220px',
+                      background: 'var(--surf2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative',
+                      overflow: 'hidden',
+                    }}>
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        opacity: .06,
+                        backgroundImage: 'repeating-linear-gradient(45deg, var(--red) 0, var(--red) 1px, transparent 0, transparent 50%)',
+                        backgroundSize: '12px 12px',
+                      }} />
+                      <span style={{
+                        position: 'relative',
+                        zIndex: 1,
+                        fontSize: '2rem',
+                        opacity: 0.2,
+                      }}>✦ ✦ ✦</span>
+                    </div>
+
+                    <div style={{ padding: 'clamp(1.5rem, 5vw, 3rem)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', minHeight: '280px' }}>
+                      <span style={{ fontSize: '.75rem', fontWeight: 700, background: 'var(--surf2)', color: 'var(--muted)', padding: '.4em 1em', borderRadius: '4px', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: '2rem' }}>
+                        Próximamente
+                      </span>
+                      <h3 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 800, marginBottom: '1.2rem', lineHeight: 1.15, color: 'var(--white)' }}>
+                        {item.title}
+                      </h3>
+                      <p style={{ fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.7 }}>
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                  )}
                 </motion.div>
               );
             })}
