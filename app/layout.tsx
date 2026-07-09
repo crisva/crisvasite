@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: {
-    default: 'Crisva Design Lab — Product Design & Branding End to End',
+    default: 'Crisva Design Lab — End to End Product & Design',
     template: '%s | Crisva Design Lab',
   },
 
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: 'Crisva Design Lab — Product Design & Branding End to End',
+    title: 'Crisva Design Lab — End to End Product & Design',
     description:
       'Laboratorio de diseño end to end. Branding, design strategy, product design, growth y desarrollo web y app. Diseñamos productos que trascienden.',
     url: BASE_URL,
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Crisva Design Lab — Product Design & Branding End to End',
+    title: 'Crisva Design Lab — End to End Product & Design',
     description:
       'Laboratorio de diseño end to end. Branding, design strategy, product design, growth y desarrollo web y app.',
     images: ['/ogcrisva.png'],
