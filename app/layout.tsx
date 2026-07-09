@@ -17,7 +17,7 @@ const figtree = Figtree({
   display: 'swap',
 });
 
-const BASE_URL = 'https://crisva.com';
+const BASE_URL = 'https://www.crisva.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -150,7 +150,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <script
           defer
-          data-domain="crisva.com"
+          data-domain="www.crisva.com"
           src="https://plausible.io/js/script.js"
         />
         <meta name="theme-color" content="#0C0C0C" />
