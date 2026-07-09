@@ -7,6 +7,8 @@ import TypingHeading from './TypingHeading';
 const TEAM = [
   { name: "Cristhian Valle", role: "Founder & Principal Designer", image: "/images/Team/Cristhian Valle CEO & Founder Principal Product Designer.png" },
   { name: "Sebastian Quintanilla", role: "UX Expert", image: "/images/Team/Sebastian Quintanilla UX Expert.png" },
+  { name: "Álvaro Echevarría", role: "Open Innovation Expert", image: "/images/Team/Alvaro Echevarria Open Innovation Expert.png" },
+  { name: "Edwin Deza", role: "Dev Lead", image: "/images/Team/Edwin Deza Dev Lead.png" },
   { name: "Miguel Corahua", role: "Product Designer Expert", image: "/images/Team/Miguel Corahua Product Designer Expert.png" },
   { name: "Christian Fujiki", role: "Brand Expert", image: "/images/Team/Christian Fujiki Brand Expert.png" },
   { name: "Belén Diaz", role: "Research Expert", image: "/images/Team/Belén Diaz Research Expert.png" },
@@ -113,7 +115,7 @@ export default function Team() {
             }}
           />
           <p className="body-lg" style={{ color: 'var(--muted)', fontSize: '1.2rem', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto' }}>
-            13 especialistas senior. Cada uno con un rol definido dentro del pipeline de producto. Sin subcontratar, sin freelancers de relleno.
+            15 especialistas senior. Cada uno con un rol definido dentro del pipeline de producto. Sin subcontratar, sin freelancers de relleno.
           </p>
         </motion.div>
 
