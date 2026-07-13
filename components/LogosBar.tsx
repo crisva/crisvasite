@@ -20,6 +20,7 @@ const LOGOS = [
   '/images/Brands/image 15.png',
   '/images/Brands/image 16.png',
   '/images/Brands/image 17.png',
+  '/images/Brands/image 18.png',
 ];
 
 export default function LogosBar() {

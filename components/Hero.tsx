@@ -100,7 +100,7 @@ export default function Hero() {
             opacity: 0.9,
             letterSpacing: '-0.02em',
           }}>
-            ¿Listo para trascender?
+            ¿Listo para empezar?
           </p>
 
           <a href="#contacto" className="btn-hero-primary bg-gradient" style={{

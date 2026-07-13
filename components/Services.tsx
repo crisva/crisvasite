@@ -307,7 +307,20 @@ function ServiceCard({ service, isActive, onClick }: any) {
             </div>
           )}
 
-          <div className="service-card-title-wrapper">
+          <div
+            className="service-card-title-wrapper"
+            style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: isActive ? 'flex-start' : 'center',
+              justifyContent: isActive ? 'flex-start' : 'flex-end',
+              gap: isActive ? '0.5rem' : '1.5rem',
+              writingMode: isActive ? 'horizontal-tb' : 'vertical-lr',
+              transform: isActive ? 'none' : 'rotate(180deg)',
+              transition: 'gap 0.4s ease',
+            }}
+          >
             <span className="label" style={{
               fontSize: isActive ? '12px' : '14px',
               color: isActive ? 'rgba(255,255,255,0.6)' : 'var(--muted)',
@@ -366,25 +379,6 @@ function ServiceCard({ service, isActive, onClick }: any) {
       </div>
 
       <style jsx>{`
-        .service-card-title-wrapper {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 1.5rem;
-          writing-mode: vertical-lr;
-          transform: rotate(180deg);
-          transition: all 0.6s ease;
-        }
-        .service-accordion-card.active .service-card-title-wrapper {
-          align-items: flex-start;
-          justify-content: flex-start;
-          gap: 0.5rem;
-          writing-mode: horizontal-tb;
-          transform: none;
-        }
-
         @media (max-width: 1024px) {
           .service-card-title-wrapper {
             writing-mode: horizontal-tb !important;

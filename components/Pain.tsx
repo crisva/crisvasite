@@ -97,7 +97,7 @@ export default function Pain() {
               margin: '0 auto'
             }}
           >
-            Tu producto puede verse bien y aun así no convertir. Porque el diseño aislado no funciona.
+            Tu producto puede verse bien y aun así no generar ventas, usuarios o cumplir tus objetivos. Porque el diseño aislado no funciona.
             Lo que falla no es el logo ni la UI: es la falta de coherencia entre estrategia, experiencia y tecnología.
           </motion.p>
         </header>

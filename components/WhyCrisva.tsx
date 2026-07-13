@@ -1,279 +1,431 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
-import { fadeUp, staggerContainer } from '@/lib/animations';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { fadeUp } from '@/lib/animations';
 import TypingHeading from './TypingHeading';
 
-const CheckIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+type Score = 'yes' | 'no' | 'partial';
+type ColKey = 'estudio' | 'consultora' | 'crisva';
 
-const XIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const COLUMNS: { key: ColKey; name: string; short: string; tagline: string }[] = [
+  { key: 'estudio', name: 'Estudio de diseño', short: 'Estudio', tagline: 'Ejecutan lo que se les pide' },
+  { key: 'consultora', name: 'Consultora digital', short: 'Consultora', tagline: 'Recomiendan, no construyen' },
+  { key: 'crisva', name: 'Crisva Design Lab', short: 'Crisva', tagline: 'Estrategia, ejecución y responsabilidad' },
+];
 
-const itemFade: any = {
-  hidden: { opacity: 0, x: -10 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+const ROWS: { criterio: string; estudio: Score; consultora: Score; crisva: Score }[] = [
+  { criterio: 'Estrategia antes del diseño', estudio: 'no', consultora: 'yes', crisva: 'yes' },
+  { criterio: 'Ejecución real del producto', estudio: 'yes', consultora: 'no', crisva: 'yes' },
+  { criterio: 'UX Research en cada decisión', estudio: 'no', consultora: 'partial', crisva: 'yes' },
+  { criterio: 'Equipo senior sin subcontratar', estudio: 'partial', consultora: 'no', crisva: 'yes' },
+  { criterio: 'Branding, UX, UI y dev en un equipo', estudio: 'no', consultora: 'no', crisva: 'yes' },
+  { criterio: 'Acompañamiento post lanzamiento', estudio: 'no', consultora: 'no', crisva: 'yes' },
+];
+
+const OUTCOME: Record<ColKey, string> = {
+  estudio: 'Entregables',
+  consultora: 'Recomendaciones',
+  crisva: 'Impacto de negocio',
 };
 
-interface CompareCardProps {
-  title: string;
-  subtitle: string;
-  items: string[];
-  isFeatured?: boolean;
-  isNegative?: boolean;
-  image?: string;
-  index: number;
-}
-
-function CompareCard({ title, subtitle, items, isFeatured, isNegative, image, index }: CompareCardProps) {
-  return (
-    <motion.div
-      className={`compare-card ${isFeatured ? 'featured' : ''}`}
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
-      whileHover={{ y: -8, transition: { duration: 0.3 } }}
-      style={{
-        backgroundColor: isFeatured ? 'var(--bg3)' : 'var(--bg2)',
-        backgroundImage: isFeatured
-          ? 'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(229, 48, 42, 0.1) 100%)'
-          : 'none',
-        border: '1px solid var(--border)',
-        borderRadius: '24px',
-        padding: '0',
-        overflow: 'hidden',
-        position: 'sticky',
-        top: `calc(10vh + ${index * 20}px)`,
-        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-        boxShadow: isFeatured
-          ? '0 0 50px -12px rgba(229, 48, 42, 0.35), 0 30px 60px -20px rgba(0, 0, 0, 0.6)'
-          : '0 20px 40px -15px rgba(0, 0, 0, 0.5)',
-        borderColor: isFeatured ? 'rgba(229, 48, 42, 0.5)' : 'var(--border)',
-        zIndex: 10 + index,
-      }}
-    >
-      <div className="compare-card-inner">
-        {/* Text Content */}
-        <div className="compare-card-text" style={{ padding: '3rem 2.5rem', display: 'flex', flexDirection: 'column', gap: '2.5rem', alignItems: 'center', textAlign: 'center' }}>
-          <motion.div className="card-header" variants={itemFade} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            {isFeatured && (
-              <span className="badge" style={{
-                display: 'inline-block',
-                background: 'var(--red)',
-                color: '#fff',
-                fontSize: '10px',
-                fontWeight: 800,
-                padding: '4px 10px',
-                borderRadius: '6px',
-                marginBottom: '1rem',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase'
-              }}>
-                CRISVA DESIGN LAB
-              </span>
-            )}
-            <h4 style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1.4rem',
-              fontWeight: 600,
-              color: 'var(--white)',
-              lineHeight: 1.2
-            }}>
-              {title}
-            </h4>
-            <p style={{
-              fontSize: '0.9rem',
-              color: 'var(--muted)',
-              marginTop: '0.75rem',
-              fontWeight: 400
-            }}>
-              {subtitle}
-            </p>
-          </motion.div>
-
-          <div className="card-body" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
-            {items.map((text, i) => (
-              <motion.div
-                key={i}
-                className="compare-row"
-                variants={itemFade}
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'center',
-                  gap: '1rem',
-                  textAlign: 'left'
-                }}
-              >
-                <div className="icon-wrapper" style={{
-                  color: isNegative ? 'var(--red)' : '#2eb450',
-                  marginTop: '4px',
-                  opacity: 0.9,
-                  flexShrink: 0
-                }}>
-                  {isNegative ? <XIcon /> : <CheckIcon />}
-                </div>
-                <p style={{
-                  fontSize: '0.95rem',
-                  color: 'var(--muted)',
-                  lineHeight: 1.5,
-                  fontWeight: 300
-                }}>
-                  {text}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Image */}
-        {image && (
-          <div className="compare-card-image">
-            <img
-              src={image}
-              alt={title}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-              }}
-            />
-          </div>
-        )}
-      </div>
-
-      <style jsx>{`
-        .compare-card-inner {
-          display: flex;
-          flex-direction: row;
-          align-items: stretch;
-        }
-        .compare-card-text {
-          flex: 1;
-          min-width: 0;
-        }
-        .compare-card-image {
-          flex: 0 0 320px;
-          min-height: 300px;
-        }
-        @media (max-width: 768px) {
-          .compare-card-inner {
-            flex-direction: column-reverse;
-          }
-          .compare-card-image {
-            flex: none;
-            height: 220px;
-          }
-        }
-      `}</style>
-    </motion.div>
-  );
+function Mark({ score }: { score: Score }) {
+  if (score === 'yes') {
+    return (
+      <span className="dot yes">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-label="Sí">
+          <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+    );
+  }
+  if (score === 'no') {
+    return (
+      <span className="dot no">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-label="No">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+    );
+  }
+  return <span className="partial">Parcial</span>;
 }
 
 export default function WhyCrisva() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 860);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const header = (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+      style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto 4rem' }}
+    >
+      <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
+        Estrategia sin ejecución es un deck. Ejecución sin estrategia es un archivo.
+      </span>
+      <TypingHeading
+        text={"¿Por qué\nCrisva?"}
+        className="display"
+        style={{
+          margin: '0 auto 1.5rem',
+          fontSize: 'clamp(3rem, 8vw, 5rem)',
+          textTransform: 'uppercase',
+          letterSpacing: '-0.02em',
+          color: 'var(--white)',
+        }}
+      />
+      <p style={{ color: 'var(--muted)', fontSize: '1.1rem', lineHeight: 1.6, maxWidth: '640px', margin: '0 auto' }}>
+        No somos un proveedor más en tu lista. Somos el equipo que entra al problema contigo, ejecuta con criterio y responde por los resultados.
+      </p>
+    </motion.div>
+  );
+
+  const cta = (
+    <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+      <a
+        href="#contacto"
+        className="btn-hero-primary bg-gradient"
+        style={{
+          padding: '16px 42px',
+          borderRadius: '100px',
+          fontSize: '17px',
+          fontWeight: 600,
+          letterSpacing: '0.01em',
+          textDecoration: 'none',
+          color: '#fff',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          boxShadow: '0 10px 40px -10px rgba(253, 118, 0, 0.4)',
+        }}
+      >
+        Conversemos sobre tu producto
+      </a>
+    </div>
+  );
+
   return (
     <section id="por-que" className="section" style={{ background: 'var(--bg)' }}>
-      <div className="container" style={{ maxWidth: '1400px' }}>
-        <motion.div
-          className="why-header"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto 5rem' }}
-        >
-          <span className="label" style={{ color: 'var(--red)', display: 'block', marginBottom: '1.5rem' }}>
-            Hay estudios que entregan. Consultoras que recomiendan. Nosotros hacemos las dos cosas.
-          </span>
-          <TypingHeading
-            text={"¿Por qué\nCrisva?"}
-            className="display"
-            style={{
-              margin: '0 auto 1.5rem',
-              fontSize: 'clamp(3rem, 8vw, 5rem)',
-              textTransform: 'uppercase',
-              letterSpacing: '-0.02em',
-              color: 'var(--white)'
-            }}
-          />
-          <p className="body-lg" style={{ color: 'var(--muted)', fontSize: '1.1rem', lineHeight: 1.6, maxWidth: '700px', margin: '0 auto' }}>
-            No somos un proveedor más en tu lista. Somos el equipo que entra al problema contigo,  ejecuta con criterio y responde por los resultados.
-          </p>
-        </motion.div>
+      <div className="container" style={{ maxWidth: '1150px' }}>
+        {header}
 
-        <motion.div
-          className="compare-grid"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
-          style={{
-            display: 'grid',
-          }}
-        >
-          <CompareCard
-            index={0}
-            title="Estudio de diseño"
-            subtitle="Ejecutan lo que se les pide. Nada más."
-            isNegative
-            image="/images/Servicios/ Estudio de diseño.png"
-            items={[
-              "Diseño sin estrategia: entregan lo que pides, no lo que necesitas.",
-              "Se desconectan al cerrar el proyecto. Sin seguimiento real.",
-              "Priorizan la estética sobre el impacto en el usuario.",
-              "Miden éxito en archivos entregados, no en resultados de negocio.",
-              "Silos entre branding, UX y UI que generan inconsistencia."
-            ]}
-          />
+        {isMobile ? (
+          /* ---------- MOBILE: 3 columnas siempre visibles, sin scroll ---------- */
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            className="m-wrap"
+          >
+            <div className="m-legend">
+              {COLUMNS.map((c) => (
+                <span key={c.key} className={`m-leg-cell ${c.key === 'crisva' ? 'hero' : ''}`}>
+                  {c.key === 'crisva' && <span className="m-star">★</span>}
+                  {c.short}
+                </span>
+              ))}
+            </div>
 
-          <CompareCard
-            index={1}
-            title="Consultora digital"
-            subtitle="Estrategia brillante. Ejecución, ninguna."
-            isNegative
-            image="/images/Servicios/Consultora digital.png"
-            items={[
-              "Cobran por hora sin garantía de entregable real.",
-              "Subcontratan el diseño: pierdes control y coherencia.",
-              "Generalistas que cobran como especialistas senior.",
-              "Decks detallados que nadie sabe cómo implementar.",
-              "Sin piel en el juego: si no funciona, no es su problema."
-            ]}
-          />
+            {ROWS.map((row, i) => (
+              <div key={i} className="m-block">
+                <p className="m-crit">{row.criterio}</p>
+                <div className="m-marks">
+                  <span className="m-cell"><Mark score={row.estudio} /></span>
+                  <span className="m-cell"><Mark score={row.consultora} /></span>
+                  <span className="m-cell hero"><Mark score={row.crisva} /></span>
+                </div>
+              </div>
+            ))}
 
-          <CompareCard
-            index={2}
-            title="Socio estratégico"
-            subtitle="Estrategia + ejecución + responsabilidad."
-            isFeatured
-            image="/images/Servicios/Socio estratégico.png"
-            items={[
-              "Proceso end-to-end: estrategia, branding, UX y UI en un solo equipo.",
-              "Acompañamos desde el diagnóstico hasta que el producto ve la luz.",
-              "UX Research integrado como base de cada decisión de diseño.",
-              "Co-creación real: tú defines el rumbo, nosotros lo hacemos posible.",
-              "Medimos éxito en impacto de negocio, no en entregables."
-            ]}
-          />
-        </motion.div>
+            <div className="m-block m-block-out">
+              <p className="m-crit"><strong>Miden el éxito en</strong></p>
+              <div className="m-marks">
+                <span className="m-cell m-out">{OUTCOME.estudio}</span>
+                <span className="m-cell m-out">{OUTCOME.consultora}</span>
+                <span className="m-cell hero m-out m-win">{OUTCOME.crisva}</span>
+              </div>
+            </div>
+          </motion.div>
+        ) : (
+          /* ---------- DESKTOP: tabla ---------- */
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            className="d-wrap"
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th className="corner" />
+                  {COLUMNS.map((c) => (
+                    <th key={c.key} className={c.key === 'crisva' ? 'hero' : ''}>
+                      {c.key === 'crisva' && <span className="badge">Nuestro modelo</span>}
+                      <span className="name">{c.name}</span>
+                      <span className="tag">{c.tagline}</span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {ROWS.map((row, i) => (
+                  <tr key={i}>
+                    <td className="crit">{row.criterio}</td>
+                    <td><Mark score={row.estudio} /></td>
+                    <td><Mark score={row.consultora} /></td>
+                    <td className="hero"><Mark score={row.crisva} /></td>
+                  </tr>
+                ))}
+                <tr className="last">
+                  <td className="crit"><strong>Miden el éxito en</strong></td>
+                  <td className="out">{OUTCOME.estudio}</td>
+                  <td className="out">{OUTCOME.consultora}</td>
+                  <td className="hero out win">{OUTCOME.crisva}</td>
+                </tr>
+              </tbody>
+            </table>
+          </motion.div>
+        )}
+
+        {cta}
       </div>
 
       <style jsx>{`
-        .compare-grid {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-          max-width: 900px;
-          margin: 0 auto;
+        /* ================= DESKTOP ================= */
+        .d-wrap {
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          overflow: hidden;
+          background: var(--bg2);
         }
-        @media (max-width: 1024px) {
-          .hide-mobile { display: none; }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+        }
+        th,
+        td {
+          padding: 1.35rem 1rem;
+          text-align: center;
+          vertical-align: middle;
+          border-bottom: 1px solid var(--border);
+        }
+        thead th {
+          padding: 2.2rem 1rem 1.7rem;
+          vertical-align: bottom;
+        }
+        .corner {
+          width: 36%;
+        }
+        tbody tr {
+          transition: background 0.2s;
+        }
+        tbody tr:hover {
+          background: rgba(255, 255, 255, 0.02);
+        }
+        th.hero,
+        td.hero {
+          background: rgba(229, 48, 42, 0.06);
+          border-left: 1px solid rgba(229, 48, 42, 0.22);
+          border-right: 1px solid rgba(229, 48, 42, 0.22);
+        }
+        th.hero {
+          border-top: 2px solid var(--red);
+        }
+        .name {
+          display: block;
+          font-family: var(--font-h);
+          font-size: 1rem;
+          font-weight: 700;
+          color: var(--white);
+          line-height: 1.3;
+          margin-bottom: 0.4rem;
+        }
+        .tag {
+          display: block;
+          font-size: 0.72rem;
+          color: var(--muted);
+          line-height: 1.45;
+          font-weight: 400;
+        }
+        .crit {
+          text-align: left;
+          font-size: 0.9rem;
+          color: var(--muted);
+          line-height: 1.5;
+          padding-left: 1.85rem;
+        }
+        .crit strong {
+          color: var(--white);
+          font-weight: 700;
+        }
+        tr.last td {
+          border-bottom: none;
+          padding-top: 1.8rem;
+          padding-bottom: 1.8rem;
+        }
+        .out {
+          font-size: 0.8rem;
+          color: var(--muted);
+          font-weight: 600;
+          line-height: 1.4;
+        }
+        .win {
+          color: var(--red);
+          font-size: 0.92rem;
+          font-weight: 800;
+        }
+
+        /* ================= MOBILE ================= */
+        .m-wrap {
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          overflow: hidden;
+          background: var(--bg2);
+        }
+        .m-wrap * {
+          box-sizing: border-box;
+        }
+        .m-legend,
+        .m-marks {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .m-legend {
+          border-bottom: 1px solid var(--border);
+          background: rgba(255, 255, 255, 0.02);
+        }
+        .m-leg-cell {
+          padding: 0.9rem 0.35rem;
+          text-align: center;
+          font-size: 0.66rem;
+          font-weight: 700;
+          color: var(--muted);
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          line-height: 1.25;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.2rem;
+          min-width: 0;
+        }
+        .m-leg-cell.hero,
+        .m-cell.hero {
+          background: rgba(229, 48, 42, 0.07);
+          box-shadow: inset 1px 0 0 rgba(229, 48, 42, 0.22);
+        }
+        .m-leg-cell.hero {
+          color: var(--red);
+          box-shadow: inset 1px 0 0 rgba(229, 48, 42, 0.22), inset 0 2px 0 var(--red);
+        }
+        .m-star {
+          font-size: 0.55rem;
+          line-height: 1;
+        }
+        .m-block {
+          border-bottom: 1px solid var(--border);
+        }
+        .m-block:last-child {
+          border-bottom: none;
+        }
+        .m-crit {
+          padding: 1.05rem 1.25rem 0.7rem;
+          font-size: 0.86rem;
+          color: var(--muted);
+          line-height: 1.45;
+          margin: 0;
+          text-align: left;
+        }
+        .m-crit strong {
+          color: var(--white);
+          font-weight: 700;
+        }
+        .m-cell {
+          padding: 0.35rem 0.3rem 1.05rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 0;
+        }
+        .m-block-out .m-crit {
+          padding-top: 1.35rem;
+        }
+        .m-block-out .m-cell {
+          padding-bottom: 1.5rem;
+          align-items: flex-start;
+        }
+        .m-out {
+          font-size: 0.68rem;
+          color: var(--muted);
+          font-weight: 600;
+          text-align: center;
+          line-height: 1.3;
+          word-break: break-word;
+        }
+        .m-win {
+          color: var(--red);
+          font-weight: 800;
+          font-size: 0.72rem;
+        }
+
+        /* ================= COMPARTIDO ================= */
+        .badge {
+          display: inline-block;
+          background: var(--red);
+          color: #fff;
+          font-size: 0.56rem;
+          font-weight: 800;
+          padding: 0.3rem 0.7rem;
+          border-radius: 100px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          margin-bottom: 0.85rem;
+          white-space: nowrap;
+        }
+        .dot {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+        .dot.yes {
+          background: rgba(46, 180, 80, 0.14);
+          color: #2eb450;
+        }
+        .dot.no {
+          background: rgba(255, 255, 255, 0.035);
+          color: rgba(255, 255, 255, 0.2);
+        }
+        .partial {
+          display: inline-block;
+          font-size: 0.52rem;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          color: #e0a63a;
+          background: rgba(224, 166, 58, 0.1);
+          border: 1px solid rgba(224, 166, 58, 0.28);
+          border-radius: 100px;
+          padding: 0.32rem 0.55rem;
+          text-transform: uppercase;
+          white-space: nowrap;
+          max-width: 100%;
         }
       `}</style>
     </section>
