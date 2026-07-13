@@ -153,6 +153,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           data-domain="www.crisva.com"
           src="https://plausible.io/js/script.js"
         />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-MDTQWJ0PSD"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-MDTQWJ0PSD');
+            `,
+          }}
+        />
         <meta name="theme-color" content="#0C0C0C" />
         <meta name="color-scheme" content="dark" />
       </head>
