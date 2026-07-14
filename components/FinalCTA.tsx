@@ -75,7 +75,7 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto' }}
         >
-          <span className="label">Listo para trascender?</span>
+          <span className="label">¿Listo para trascender?</span>
 
           <h2
             className="h2"

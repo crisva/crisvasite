@@ -11,7 +11,6 @@ const TEAM = [
   { name: "Edwin Deza", role: "Dev Lead", image: "/images/Team/Edwin Deza Dev Lead.png" },
   { name: "Miguel Corahua", role: "Product Designer Expert", image: "/images/Team/Miguel Corahua Product Designer Expert.png" },
   { name: "Christian Fujiki", role: "Brand Expert", image: "/images/Team/Christian Fujiki Brand Expert.png" },
-  { name: "Belén Diaz", role: "Research Expert", image: "/images/Team/Belén Diaz Research Expert.png" },
   { name: "Tata Portal", role: "Art Experience Designer", image: "/images/Team/Tata Portal Art Experience Designer.png" },
   { name: "Geomar Ventura", role: "UI Expert", image: "/images/Team/Geomar Ventura UI Expert.png" },
   { name: "Brenda Campos", role: "Design Strategist", image: "/images/Team/Brenda Campos Design Strategist.png" },
@@ -115,7 +114,7 @@ export default function Team() {
             }}
           />
           <p className="body-lg" style={{ color: 'var(--muted)', fontSize: '1.2rem', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto' }}>
-            15 especialistas senior. Cada uno con un rol definido dentro del pipeline de producto. Sin subcontratar, sin freelancers de relleno.
+            14 especialistas senior. Cada uno con un rol definido dentro del pipeline de producto. Sin subcontratar, sin freelancers de relleno.
           </p>
         </motion.div>
 
